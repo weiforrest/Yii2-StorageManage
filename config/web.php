@@ -40,6 +40,7 @@ $config = [
         'db' => require(__DIR__ . '/db.php'),
     ],
     'params' => $params,
+	'defaultRoute' => 'card', /*set the default controller*/ 
 ];
 
 if (YII_ENV_DEV) {
