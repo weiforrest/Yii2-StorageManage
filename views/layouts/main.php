@@ -27,7 +27,7 @@ AppAsset::register($this);
 <div class="wrap">
     <?php
     NavBar::begin([
-        'brandLabel' => 'My Company',
+        'brandLabel' => '龙记公司出入库管理系统',
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [
             'class' => 'navbar-inverse navbar-fixed-top',
@@ -36,13 +36,17 @@ AppAsset::register($this);
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
-            ['label' => 'Home', 'url' => ['/site/index']],
+			['label' => '发货', 'url' => ['/trade/index']],
+			['label' => '收款', 'url' => ['/receive/index']],
+			['label' => '入库', 'url' => ['/input/index']],
+            ['label' => '商品', 'url' => ['/good/index']],
+			['label' => '账户', 'url' => ['/card/index']],
             ['label' => 'About', 'url' => ['/site/about']],
             ['label' => 'Contact', 'url' => ['/site/contact']],
             Yii::$app->user->isGuest ?
-                ['label' => 'Login', 'url' => ['/site/login']] :
+                ['label' => '登陆', 'url' => ['/site/login']] :
                 [
-                    'label' => 'Logout (' . Yii::$app->user->identity->username . ')',
+                    'label' => '注销 (' . Yii::$app->user->identity->username . ')',
                     'url' => ['/site/logout'],
                     'linkOptions' => ['data-method' => 'post']
                 ],
