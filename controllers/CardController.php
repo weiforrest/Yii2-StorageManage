@@ -8,6 +8,7 @@ use app\models\CardSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\filters\AccessControl;
 
 /**
  * CardController implements the CRUD actions for Card model.
@@ -23,6 +24,16 @@ class CardController extends Controller
                     'delete' => ['post'],
                 ],
             ],
+			'access' => [
+				'class' => AccessControl::className(),
+				'rules' => [
+					[
+						'allow' => true,
+						'actions' => ['index', 'view', 'create', 'update', 'delete'],
+						'roles' => ['@'],
+					],
+				],
+			],
         ];
     }
 

@@ -8,6 +8,7 @@ use app\models\GoodSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\filters\AccessControl;
 
 /**
  * GoodController implements the CRUD actions for Good model.
@@ -23,6 +24,16 @@ class GoodController extends Controller
                     'delete' => ['post'],
                 ],
             ],
+			'access' => [
+				'class' => AccessControl::className(),
+				'rules' => [
+					[
+						'allow' => true,
+						'actions' => ['index', 'view', 'create', 'update', 'delete'],
+						'roles' => ['@'],
+					],
+				],
+			],
         ];
     }
 

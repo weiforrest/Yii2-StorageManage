@@ -43,11 +43,12 @@ AppAsset::register($this);
 			['label' => '账户', 'url' => ['/card/index']],
             ['label' => 'About', 'url' => ['/site/about']],
             ['label' => 'Contact', 'url' => ['/site/contact']],
+			['label' => '管理员', 'url' => ['/user/admin']],
             Yii::$app->user->isGuest ?
-                ['label' => '登陆', 'url' => ['/site/login']] :
+                ['label' => 'Login', 'url' => ['/user/login']] :
                 [
-                    'label' => '注销 (' . Yii::$app->user->identity->username . ')',
-                    'url' => ['/site/logout'],
+                    'label' => 'Logout (' . Yii::$app->user->displayname . ')',
+                    'url' => ['/user/logout'],
                     'linkOptions' => ['data-method' => 'post']
                 ],
         ],
