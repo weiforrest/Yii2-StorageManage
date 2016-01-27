@@ -1,10 +1,10 @@
--- User Table
-CREATE TABLE user(
-	user_id INT UNSIGNED  NOT NULL AUTO_INCREMENT,
+-- customer Table
+CREATE TABLE customer(
+	customer_id INT UNSIGNED  NOT NULL AUTO_INCREMENT,
 	name VARCHAR(128) NOT NULL,
 	telphone VARCHAR(64) NOT NULL,
 	time TIMESTAMP NOT NULL DEFAULT NOW(),
-	PRIMARY KEY(user_id)
+	PRIMARY KEY(customer_id)
 ) ENGINE = InnoDB;
 
 CREATE TABLE good(
@@ -19,12 +19,12 @@ CREATE TABLE good(
 
 CREATE TABLE trade(
 	trade_id INT UNSIGNED NOT NULL AUTO_INCREMENT,
-	user_id INT UNSIGNED NOT NULL,
+	customer_id INT UNSIGNED NOT NULL,
 	time  TIMESTAMP NOT NULL DEFAULT NOW(),
 	money DECIMAL(10,2) NOT NULL,
 	PRIMARY KEY(trade_id),
-	INDEX(user_id),
-	FOREIGN KEY(user_id) REFERENCES user (user_id)
+	INDEX(customer_id),
+	FOREIGN KEY(customer_id) REFERENCES customer (customer_id)
 ) ENGINE = InnoDB;
 
 CREATE TABLE trade_detail(
@@ -46,14 +46,14 @@ CREATE TABLE card(
 
 CREATE TABLE receive_money(
 	receive_id INT UNSIGNED NOT NULL AUTO_INCREMENT,
-	user_id INT UNSIGNED NOT NULL,
+	customer_id INT UNSIGNED NOT NULL,
 	card_id INT UNSIGNED NOT NULL,
 	time TIMESTAMP NOT NULL DEFAULT NOW(),
 	money DECIMAL(10,2) NOT NULL,
 	PRIMARY KEY(receive_id),
-	INDEX(user_id),
+	INDEX(customer_id),
 	INDEX(card_id),
-	FOREIGN KEY(user_id) REFERENCES user (user_id),
+	FOREIGN KEY(customer_id) REFERENCES customer (customer_id),
 	FOREIGN KEY(card_id) REFERENCES card (card_id)
 ) ENGINE = InnoDB;
 
