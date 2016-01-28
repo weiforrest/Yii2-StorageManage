@@ -1,6 +1,13 @@
 <?php
 
 return [
+	//layout
+	'Login' => '登陆',
+	'Logout' => '退出',
+	'Admin' => '管理员',
+	'Trade' => '发货',
+	'Receive' => '收款',
+	'Inputs' => '入库',
 
     // Goods 
 	'Goods' => '商品', 
@@ -23,10 +30,15 @@ return [
 	'Card Number' => '账户卡号',
 	'Create Card' => '创建账户',
 	'Update' => '更新',
-	//layout
-	'Login' => '登陆',
-	'Logout' => '退出',
-	'Admin' => '管理员',
+
+	//Customer
+	'Customer' => '顾客',
+	'Customers' => '顾客',
+	'Create Customer' => '创建顾客',
+	'Customer ID' => '顾客 ID',
+	'Telphone' => '电话',
+	'Time' => '创建时间',
+
 
 	//Customer
 	'Customer' => '顾客',
