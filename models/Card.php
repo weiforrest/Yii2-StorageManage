@@ -41,9 +41,9 @@ class Card extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'card_id' => 'Card ID',
-            'name' => 'Name',
-            'card_number' => 'Card Number',
+            'card_id' => Yii::t('app', 'Card ID'),
+            'name' => Yii::t('app', 'Name'),
+            'card_number' => Yii::t('app', 'Card Number'),
         ];
     }
 

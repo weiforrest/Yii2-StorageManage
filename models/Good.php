@@ -48,12 +48,12 @@ class Good extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'good_id' => 'Good ID',
-            'name' => 'Name',
-            'unit' => 'Unit',
-            'price' => 'Price',
-            'cost' => 'Cost',
-            'enable' => 'Enable',
+            'good_id' => Yii::t('app', 'Good ID'),
+            'name' => Yii::t('app', 'Name'),
+            'unit' => Yii::t('app', 'Unit'),
+            'price' => Yii::t('app', 'Price'),
+            'cost' => Yii::t('app', 'Cost'),
+            'enable' => Yii::t('app', 'Enable'),
         ];
     }
 

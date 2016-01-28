@@ -36,18 +36,18 @@ AppAsset::register($this);
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
-			['label' => '发货', 'url' => ['/trade/index']],
-			['label' => '收款', 'url' => ['/receive/index']],
-			['label' => '入库', 'url' => ['/input/index']],
-            ['label' => '商品', 'url' => ['/good/index']],
-			['label' => '账户', 'url' => ['/card/index']],
+			['label' => Yii::t('app','Trade'), 'url' => ['/trade/index']],
+			['label' => Yii::t('app','Receive'), 'url' => ['/receive/index']],
+			['label' => Yii::t('app', 'Inputs'), 'url' => ['/input/index']],
+            ['label' => Yii::t('app', 'Goods'), 'url' => ['/good/index']],
+			['label' => Yii::t('app', 'Cards'), 'url' => ['/card/index']],
             ['label' => 'About', 'url' => ['/site/about']],
             ['label' => 'Contact', 'url' => ['/site/contact']],
-			['label' => '管理员', 'url' => ['/user/admin']],
+			['label' => Yii::t('app', 'Admin'), 'url' => ['/user/admin']],
             Yii::$app->user->isGuest ?
-                ['label' => 'Login', 'url' => ['/user/login']] :
+                ['label' => Yii::t('app', 'Login'), 'url' => ['/user/login']] :
                 [
-                    'label' => 'Logout (' . Yii::$app->user->displayname . ')',
+                    'label' => Yii::t('app', 'Logout') . ' (' . Yii::$app->user->displayname . ')',
                     'url' => ['/user/logout'],
                     'linkOptions' => ['data-method' => 'post']
                 ],
