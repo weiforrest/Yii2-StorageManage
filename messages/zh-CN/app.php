@@ -28,5 +28,18 @@ return [
 	'Logout' => '退出',
 	'Admin' => '管理员',
 
+	//Customer
+	'Customer' => '顾客',
+	'Customers' => '顾客',
+	'Create Customer' => '创建顾客',
+	'Customer ID' => '顾客 ID',
+	'Telphone' => '电话',
+	'Time' => '创建时间',
+
+	//Input
+	'Input ID' => '入库 ID',
+	'Create Input' => '创建入库',
+	'Input' => '入库',
+	'Count' => '总数',
 
 ];
