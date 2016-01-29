@@ -60,25 +60,15 @@ class InputSearch extends Input
             'query' => $query,
         ]);
 
-		$dataProvider->setSort([
-			'attributes' => [
-				'input_id' => [
-					'asc' => ['input_id' => SORT_ASC],
-					'desc' => ['input_id' => SORT_DESC],
-					'label' => Yii::t('app', 'Input ID'),
-				],
-				'time' => [
-					'label' => Yii::t('app', 'Time'),
-					'asc' => ['time' => SORT_ASC],
-					'desc' => ['time' => SORT_DESC],
-				],
-				'count' => [
+		/*
+		 *set the count search 	
+		 */
+		$dataProvider->sort->attributes['count'] = [
 					'asc' => ['sum(count)' => SORT_ASC],
 					'desc' => ['sum(count)' => SORT_DESC],
 					'label' => Yii::t('app', 'Count'),
-				],
-			],
-		]);
+		];
+
         $this->load($params);
 
         if (!$this->validate()) {
