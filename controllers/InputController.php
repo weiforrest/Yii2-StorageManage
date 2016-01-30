@@ -6,6 +6,7 @@ use Yii;
 use app\models\Input;
 use app\models\InputDetail;
 use app\models\InputSearch;
+use app\models\InputDetailSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -74,13 +75,12 @@ class InputController extends Controller
 		 * ON input.input_id = input_detail.input_id
 		 * AND input_detail.good_id = good_id
 		 */
-		$input = $this->findModel($id);
-		$query = $input->getInputDetails();
-		$dataProvider =  new ActiveDataProvider([
-			'query' => $query,
-		]);
+		$searchModel = new InputDetailSearch();
+		$model = $this->findModel($id);
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams, $id);
         return $this->render('view', [
-			'model' => $input,
+			'model' => $model,
+			'searchModel' => $searchModel,
 			'dataProvider' => $dataProvider,
         ]);
     }

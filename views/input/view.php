@@ -31,6 +31,7 @@ $this->params['breadcrumbs'][] = $this->title;
 	<h2> <?= Yii::t('app','Time' ) . ': ' . $model->time; ?> </h2>
 	<?= GridView::widget([
 		'dataProvider' => $dataProvider,
+        'filterModel' => $searchModel,
 		'columns' => [
 			['class' => 'yii\grid\SerialColumn'],
 			[
