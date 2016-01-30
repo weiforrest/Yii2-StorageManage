@@ -78,7 +78,7 @@ class InputSearch extends Input
         }
 
         $query->andFilterWhere([
-            'input_id' => $this->input_id,
+            'input.input_id' => $this->input_id,
             'time' => $this->time,
 			'count' => $this->count,
         ]);
