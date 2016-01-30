@@ -33,7 +33,10 @@ $this->params['breadcrumbs'][] = $this->title;
 		'dataProvider' => $dataProvider,
 		'columns' => [
 			['class' => 'yii\grid\SerialColumn'],
-			'name',
+			[
+				'attribute' => 'good_id', 
+				'value' => 'good.name',
+			],
 			'count',
 		],
 	]) ?>

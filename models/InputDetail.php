@@ -16,7 +16,6 @@ use Yii;
  */
 class InputDetail extends \yii\db\ActiveRecord
 {
-	public $name;
     /**
      * @inheritdoc
      */
@@ -45,7 +44,6 @@ class InputDetail extends \yii\db\ActiveRecord
             'input_id' => Yii::t('app', 'Input ID'),
             'good_id' => Yii::t('app', 'Good ID'),
             'count' => Yii::t('app', 'Count'),
-			'name' => Yii::t('app', 'Name'),
         ];
     }
 

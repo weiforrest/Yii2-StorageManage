@@ -75,7 +75,7 @@ class InputController extends Controller
 		 * AND input_detail.good_id = good_id
 		 */
 		$input = $this->findModel($id);
-		$query = $input->getInputDetails()->select(['good.name', 'count'])->innerJoin('good', 'input_detail.good_id = good.good_id');
+		$query = $input->getInputDetails();
 		$dataProvider =  new ActiveDataProvider([
 			'query' => $query,
 		]);

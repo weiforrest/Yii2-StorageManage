@@ -13,6 +13,7 @@ return [
 	'Goods' => '商品', 
 	'Good' => '商品',
     'Goods ID' => '商品 ID',
+	'Good ID' => '商品 ID',
 	'Name' => '名称',
 	'Unit' => '单位',
 	'Price' => '单价',
@@ -52,7 +53,7 @@ return [
 	'Input ID' => '入库 ID',
 	'Create Input' => '创建入库',
 	'Input' => '入库',
-	'Count' => '总数',
+	'Count' => '件数',
 	'Details' => '详情',
 
 ];
