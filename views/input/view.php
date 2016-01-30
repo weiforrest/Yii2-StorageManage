@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
+use yii\grid\GridView;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Input */
@@ -26,19 +27,13 @@ $this->params['breadcrumbs'][] = $this->title;
         ]) ?>
     </p>
 
-    <?= DetailView::widget([
-        'model' => $model,
-        'attributes' => [
-            'input_id',
-            'time',
-        ],
-    ]) ?>
 	
-	<?= DetailView::widget([
-		'model' => $detail[0],
-		'attributes' => [
-			'input_id',
-			'good_id',
+	<h2> <?= Yii::t('app','Time' ) . ': ' . $model->time; ?> </h2>
+	<?= GridView::widget([
+		'dataProvider' => $dataProvider,
+		'columns' => [
+			['class' => 'yii\grid\SerialColumn'],
+			'name',
 			'count',
 		],
 	]) ?>

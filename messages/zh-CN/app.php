@@ -53,5 +53,6 @@ return [
 	'Create Input' => '创建入库',
 	'Input' => '入库',
 	'Count' => '总数',
+	'Details' => '详情',
 
 ];

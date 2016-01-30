@@ -4,11 +4,13 @@ namespace app\controllers;
 
 use Yii;
 use app\models\Input;
+use app\models\InputDetail;
 use app\models\InputSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
+use yii\data\ActiveDataProvider;
 
 /**
  * InputController implements the CRUD actions for Input model.
@@ -73,10 +75,13 @@ class InputController extends Controller
 		 * AND input_detail.good_id = good_id
 		 */
 		$input = $this->findModel($id);
-		$detail = $input->inputDetails;
+		$query = $input->getInputDetails()->select(['good.name', 'count'])->innerJoin('good', 'input_detail.good_id = good.good_id');
+		$dataProvider =  new ActiveDataProvider([
+			'query' => $query,
+		]);
         return $this->render('view', [
-            'model' => $input,
-			'detail' => $detail,
+			'model' => $input,
+			'dataProvider' => $dataProvider,
         ]);
     }
 
