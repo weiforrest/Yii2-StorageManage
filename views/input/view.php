@@ -3,7 +3,7 @@
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 use yii\grid\GridView;
-
+use yii\widgets\Pjax;
 /* @var $this yii\web\View */
 /* @var $model app\models\Input */
 /* @var $detail app\models\InputDetail */
@@ -29,6 +29,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
 	
 	<h2> <?= Yii::t('app','Time' ) . ': ' . $model->time; ?> </h2>
+<?php Pjax::begin(); ?>
 	<?= GridView::widget([
 		'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
@@ -41,6 +42,7 @@ $this->params['breadcrumbs'][] = $this->title;
 			'count',
 		],
 	]) ?>
+<?php Pjax::end(); ?>
 	
 
 
