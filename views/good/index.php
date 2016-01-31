@@ -3,6 +3,8 @@
 use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
+use yii\bootstrap\Modal;
+use yii\helpers\Url;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\GoodSearch */
@@ -17,8 +19,23 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a(Yii::t('app', 'Create Good'), ['create'], ['class' => 'btn btn-success']) ?>
+		<?= Html::button(Yii::t('app', 'Create Good'),
+			[ 'value' => Url::to('index.php?r=good/create'),
+		   	'id' => 'modalButton',
+		   	'class' => 'btn btn-success']) ?>
     </p>
+
+	<?php Modal::begin([
+		'header' => '<h1>'.Yii::t('app', 'Create Good').'</h1>',
+		'id' => 'modal',
+		'size' => 'modal-lg',
+	]);
+	echo "<div id = 'modalContent'></div>";
+	Modal::end();
+	?>
+
+
+
 <?php Pjax::begin(); ?>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
