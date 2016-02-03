@@ -12,6 +12,9 @@ use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use yii\data\ActiveDataProvider;
+use yii\web\response;
+use yii\widgets\ActiveForm;
+use yii\helpers\ArrayHelper;
 
 /**
  * InputController implements the CRUD actions for Input model.
@@ -47,10 +50,10 @@ class InputController extends Controller
     public function actionIndex()
     {
 		/*
-		 * SELECT input.input_id, input.time,
+		 * SELECT input.id, input.time,
 		 * SUM(input_detail.count) AS count
 		 * FROM input INNER JOIN input_detail
-		 * ON input.input_id = input_detail.input_id
+		 * ON input.id = input_detail.input_id
 		 */
         $searchModel = new InputSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
@@ -69,10 +72,10 @@ class InputController extends Controller
     public function actionView($id)
     {
 		/*
-		 * SELECT input.input_id, good.name,
+		 * SELECT input.id, good.name,
 		 * input_detail.count FROM input
 		 * INNER JOIN  input_detail INNER JOIN good
-		 * ON input.input_id = input_detail.input_id
+		 * ON input.id = input_detail.input_id
 		 * AND input_detail.good_id = good_id
 		 */
 		$searchModel = new InputDetailSearch();
@@ -93,15 +96,49 @@ class InputController extends Controller
     public function actionCreate()
     {
         $model = new Input();
+		$modelDetails = [new  InputDetail];
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->input_id]);
-        } else {
-            return $this->render('create', [
-                'model' => $model,
-            ]);
-        }
-    }
+        if ($model->load(Yii::$app->request->post())) {
+			$modelDetails = Input::createMultiple(InputDetail::classname());
+			Input::loadMultiple($modelDetails, Yii::$app->request->post());
+
+			//ajax validation
+			if(Yii::$app->request->isAjax) {
+				Yii::$app->response->format = Response::FORMAT_JSON;
+				return ArrayHelper::merge(
+					ActiveForm::validateMultiple($modelDetails),
+					ActiveForm::validate($model)
+				);
+			}
+
+			//validate all models
+			$valid = $model->validate();
+			$valid = Input::validateMultiple($modelDetails) && $valid;
+			if($valid) {
+				$transcation = Yii::$app->db->beginTransaction();
+				try{
+					if($flag = $model->save(false)) {
+						foreach ($modelDetails as $modelDetail) {
+							$modelDetail->input_id = $model->id;
+							if( ! ($flag = $modelDetail->save(false))) {
+								$transcation->rollBack();
+							}
+						}
+					}
+					if($flag) {
+						$transcation->commit();
+						return $this->redirect(['view', 'id' => $model->id]);
+					}
+				} catch (Exception $e) {
+					$transcation->rollBack();
+				}
+			}
+		}
+		return $this->render('create', [
+			'model' => $model,
+			'modelDetails' => (empty($modelDetails)) ? [new InputDetail] :  $modelDetails,
+		]);
+	}
 
     /**
      * Updates an existing Input model.
@@ -109,18 +146,60 @@ class InputController extends Controller
      * @param integer $id
      * @return mixed
      */
-    public function actionUpdate($id)
+	public function actionUpdate($id)
     {
-        $model = $this->findModel($id);
+		$model = $this->findModel($id);
+		$modelDetails = $model->inputDetails;
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->input_id]);
-        } else {
-            return $this->render('update', [
-                'model' => $model,
-            ]);
-        }
-    }
+        if ($model->load(Yii::$app->request->post())) {
+			$oldIDs = ArrayHelper::map($modelDetails, 'id', 'id');
+			$modelDetails = Input::createMultiple(InputDetail::classname(), $modelDetails);
+			Input::loadMultiple($modelDetails, Yii::$app->request->post());
+			$deleteIDS = array_diff($oldIDs, array_filter(ArrayHelper::map($modelDetails, 'id', 'id')));
+
+
+			//ajax validation
+			if(Yii::$app->request->isAjax) {
+				Yii::$app->response->format = Response::FORMAT_JSON;
+				return ArrayHelper::merge(
+					ActiveForm::validateMultiple($modelDetails),
+					ActiveForm::validate($model)
+				);
+			}
+
+			//validate all models
+			$valid = $model->validate();
+			//$valid = Input::validateMultiple($modelDetails) && $valid;
+
+			if($valid) {
+				$transcation = Yii::$app->db->beginTransaction();
+				try{
+					if($flag = $model->save(false)) {
+						if(!empty($deleteIDS)){
+							InputDetail::deleteAll(['id' => $deleteIDS]);
+						}
+						foreach ($modelDetails as $modelDetail) {
+							$modelDetail->input_id = $model->id;
+							if( ! ($flag = $modelDetail->save(false))) {
+								$transcation->rollBack();
+							}
+						}
+					}
+					if($flag) {
+						$transcation->commit();
+						return $this->redirect(['view', 'id' => $model->id]);
+					}
+				} catch (Exception $e) {
+					$transcation->rollBack();
+				}
+			}
+		}
+
+		return $this->render('create', [
+			'model' => $model,
+			'modelDetails' => (empty($modelDetails)) ? [new InputDetail] :  $modelDetails
+		]);
+	}
 
     /**
      * Deletes an existing Input model.

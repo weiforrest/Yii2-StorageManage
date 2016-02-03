@@ -18,7 +18,7 @@ class InputSearch extends Input
     public function rules()
     {
         return [
-            [['input_id'], 'integer'],
+            [['id'], 'integer'],
             [['time'], 'safe'],
 			[['count'], 'integer'],
         ];
@@ -27,7 +27,7 @@ class InputSearch extends Input
     public function attributeLabels()
     {
         return [
-            'input_id' => Yii::t('app', 'Input ID'),
+            'id' => Yii::t('app', 'Input ID'),
             'time' => Yii::t('app', 'Time'),
 			'count' => Yii::t('app', 'Count'),
         ];
@@ -51,10 +51,10 @@ class InputSearch extends Input
     public function search($params)
     {
 		$query = Input::find()->select([
-			'input.input_id',
+			'input.id',
 			'time',
 			'sum(count) as count',
-		])->innerJoin('input_detail', 'input.input_id = input_detail.input_id')->groupBy('input_detail.input_id');
+		])->innerJoin('input_detail', 'input.id = input_detail.input_id')->groupBy('input_detail.input_id');
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
@@ -78,7 +78,7 @@ class InputSearch extends Input
         }
 
         $query->andFilterWhere([
-            'input.input_id' => $this->input_id,
+            'input.id' => $this->id,
             'time' => $this->time,
 			'count' => $this->count,
         ]);

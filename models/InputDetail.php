@@ -30,7 +30,7 @@ class InputDetail extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['input_id', 'good_id', 'count'], 'required'],
+            [['good_id', 'count'], 'required'],
             [['input_id', 'good_id', 'count'], 'integer']
         ];
     }
@@ -41,6 +41,7 @@ class InputDetail extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
+			'id' => Yii::t('app', 'ID'),
             'input_id' => Yii::t('app', 'Input ID'),
             'good_id' => Yii::t('app', 'Good ID'),
             'count' => Yii::t('app', 'Count'),
@@ -52,7 +53,7 @@ class InputDetail extends \yii\db\ActiveRecord
      */
     public function getInput()
     {
-        return $this->hasOne(Input::className(), ['input_id' => 'input_id']);
+        return $this->hasOne(Input::className(), ['id' => 'input_id']);
     }
 
     /**

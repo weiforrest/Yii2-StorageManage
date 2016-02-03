@@ -18,7 +18,7 @@ class InputDetailSearch extends InputDetail
     public function rules()
     {
         return [
-            [['input_id', 'count'], 'integer'],
+            [['id', 'input_id', 'count'], 'integer'],
 			[['good_id'], 'safe'],
         ];
     }

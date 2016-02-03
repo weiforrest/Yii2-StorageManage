@@ -25,9 +25,9 @@ $this->params['breadcrumbs'][] = $this->title;
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+            //['class' => 'yii\grid\SerialColumn'],
 
-            'input_id',
+            'id',
             'time',
 			['label' => Yii::t('app', 'Count'), 'attribute' => 'count', 'value' => 'count'],
 
