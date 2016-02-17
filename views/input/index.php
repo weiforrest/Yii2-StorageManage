@@ -1,8 +1,10 @@
 <?php
 
 use yii\helpers\Html;
-use yii\grid\GridView;
+//use yii\grid\GridView;
 use yii\widgets\Pjax;
+use kartik\grid\GridView;
+use app\models\InputDetailSearch;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\InputSearch */
@@ -26,6 +28,22 @@ $this->params['breadcrumbs'][] = $this->title;
         'filterModel' => $searchModel,
         'columns' => [
             //['class' => 'yii\grid\SerialColumn'],
+            [
+                'class' => 'kartik\grid\ExpandRowColumn',
+                'value' => function ($model, $key, $index, $column) {
+                    return GridView::ROW_COLLAPSED;
+                },
+                'detail' => function ($model, $key, $index, $column) {
+                    $searchModel = new InputDetailSearch();
+                    $dataProvider = $searchModel->search(Yii::$app->request->queryParams, $model->id);
+
+                    return Yii::$app->controller->renderPartial('_detail', [
+                        'searchModel' => $searchModel,
+                        'dataProvider' => $dataProvider,
+                    ]);
+
+                },
+            ],
 
             'id',
             'time',

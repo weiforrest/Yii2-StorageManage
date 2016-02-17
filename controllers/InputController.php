@@ -11,7 +11,6 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
-use yii\data\ActiveDataProvider;
 use yii\web\response;
 use yii\widgets\ActiveForm;
 use yii\helpers\ArrayHelper;

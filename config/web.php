@@ -48,6 +48,9 @@ $config = [
 		'user' => [
 			'class' => 'amnah\yii2\user\Module',
 		],
+        'gridview' => [
+            'class' => '\kartik\grid\Module',
+        ],
 	],
 	'language' => 'zh-CN',
 ];
