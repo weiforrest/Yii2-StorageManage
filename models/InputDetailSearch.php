@@ -39,9 +39,9 @@ class InputDetailSearch extends InputDetail
      *
      * @return ActiveDataProvider
      */
-    public function search($params, $id)
+    public function search($params)
     {
-        $query = InputDetail::find()->where(['input_id' => $id]);
+        $query = InputDetail::find();
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,

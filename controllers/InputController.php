@@ -79,7 +79,8 @@ class InputController extends Controller
 		 */
 		$searchModel = new InputDetailSearch();
 		$model = $this->findModel($id);
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams, $id);
+        $searchModel->input_id = $id;
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
         return $this->render('view', [
 			'model' => $model,
 			'searchModel' => $searchModel,

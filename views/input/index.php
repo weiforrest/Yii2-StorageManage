@@ -35,7 +35,8 @@ $this->params['breadcrumbs'][] = $this->title;
                 },
                 'detail' => function ($model, $key, $index, $column) {
                     $searchModel = new InputDetailSearch();
-                    $dataProvider = $searchModel->search(Yii::$app->request->queryParams, $model->id);
+                    $searchModel->input_id = $model->id;
+                    $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
                     return Yii::$app->controller->renderPartial('_detail', [
                         'searchModel' => $searchModel,
