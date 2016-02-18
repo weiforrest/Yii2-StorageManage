@@ -209,6 +209,7 @@ class InputController extends Controller
      */
     public function actionDelete($id)
     {
+        InputDetail::deleteAll(['input_id' => $id]);
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
