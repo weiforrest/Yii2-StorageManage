@@ -2,7 +2,9 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use yii\helpers\ArrayHelper;
 use wbraganca\dynamicform\DynamicFormWidget;
+use app\models\Good;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Input */
@@ -54,7 +56,10 @@ use wbraganca\dynamicform\DynamicFormWidget;
 			?>
 			<div class="row">
 				<div class="col-sm-6">
-					<?= $form->field($modelDetail, "[{$i}]good_id")->textInput(['maxlength' => true]) ?>
+					<?= $form->field($modelDetail, "[{$i}]good_id")->dropDownList(
+						ArrayHelper::map(Good::find()->all(), 'good_id', 'name'),
+						['prompt' => 'Select Good']
+					)?>
 				</div>
 				<div class="col-sm-6">
 					<?= $form->field($modelDetail, "[{$i}]count")->textInput(['maxlength' => true]) ?>
