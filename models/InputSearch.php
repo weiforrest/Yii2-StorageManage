@@ -6,12 +6,14 @@ use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 use app\models\Input;
+use app\models\InputDetail;
 
 /**
  * InputSearch represents the model behind the search form about `app\models\Input`.
  */
 class InputSearch extends Input
 {
+    public $detailCount;
     /**
      * @inheritdoc
      */
@@ -19,8 +21,7 @@ class InputSearch extends Input
     {
         return [
             [['id'], 'integer'],
-            [['time'], 'safe'],
-			[['count'], 'integer'],
+            [['time', 'detailCount'], 'safe'],
         ];
     }
 
@@ -29,7 +30,6 @@ class InputSearch extends Input
         return [
             'id' => Yii::t('app', 'Input ID'),
             'time' => Yii::t('app', 'Time'),
-			'count' => Yii::t('app', 'Count'),
         ];
     }
     /**
@@ -50,11 +50,11 @@ class InputSearch extends Input
      */
     public function search($params)
     {
-		$query = Input::find()->select([
-			'input.id',
-			'time',
-			'sum(count) as count',
-		])->innerJoin('input_detail', 'input.id = input_detail.input_id')->groupBy('input_detail.input_id');
+        $query = Input::find();
+        $subquery = InputDetail::find()
+                    ->select('input_id, SUM(count) as detail_count')
+                    ->groupBy('input_id');
+        $query->leftJoin(['detailSum' => $subquery], 'detailSum.input_id = id');
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
@@ -63,9 +63,9 @@ class InputSearch extends Input
 		/*
 		 *set the count search 	
 		 */
-		$dataProvider->sort->attributes['count'] = [
-					'asc' => ['sum(count)' => SORT_ASC],
-					'desc' => ['sum(count)' => SORT_DESC],
+		$dataProvider->sort->attributes['detailCount'] = [
+					'asc' => ['detailSum.detail_count' => SORT_ASC],
+					'desc' => ['detailSum.detail_count' => SORT_DESC],
 					'label' => Yii::t('app', 'Count'),
 		];
 
@@ -78,9 +78,9 @@ class InputSearch extends Input
         }
 
         $query->andFilterWhere([
-            'input.id' => $this->id,
+            'id' => $this->id,
             'time' => $this->time,
-			'count' => $this->count,
+            'detailSum.detail_count' => $this->detailCount,
         ]);
 
         return $dataProvider;

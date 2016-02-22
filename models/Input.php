@@ -16,10 +16,6 @@ use yii\helpers\ArrayHelper;
  */
 class Input extends \yii\db\ActiveRecord
 {
-	/*
-	 *for sum of input_detail
-	 */
-	public $count;
     /**
      * @inheritdoc
      */
@@ -46,6 +42,7 @@ class Input extends \yii\db\ActiveRecord
         return [
             'id' => Yii::t('app', 'Input ID'),
             'time' => Yii::t('app', 'Time'),
+			'detailCount' => Yii::t('app', 'Count'),
         ];
     }
 
@@ -56,6 +53,15 @@ class Input extends \yii\db\ActiveRecord
     {
         return $this->hasMany(InputDetail::className(), ['input_id' => 'id']);
     }
+
+	/*
+	 * @return integer
+	 */
+	public function getDetailCount()
+	{
+		return $this->getInputDetails()
+				->sum('count');
+	}
 
     /**
      * @return \yii\db\ActiveQuery

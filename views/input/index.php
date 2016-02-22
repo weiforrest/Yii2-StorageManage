@@ -48,8 +48,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
             'id',
             'time',
-			['label' => Yii::t('app', 'Count'), 'attribute' => 'count', 'value' => 'count'],
-
+            'detailCount',
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>
