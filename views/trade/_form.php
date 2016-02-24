@@ -66,9 +66,14 @@ use app\models\Customer;
                                             ArrayHelper::map(Good::find()->all(), 'good_id', 'name'),
                                             [
                                                 'prompt' => Yii::t('app','Select Good'),
-                                                'onchange' => ''
+                                                'onchange' => '
+                                                    if($(this).val() !== ""){
+                                                        var name = $(this).attr("id").replace("good_id","price");
+                                                        $.post("index.php?r=good/price&id="+$(this).val(),function (data) {
+                                                            $("#"+name).val(data);
+                                                });}'
                                             ]
-                                        )?>
+                                        );?>
                                     </div>
                                     <div class="col-sm-6">
                                         <?= $form->field($modelDetail, "[{$i}]count")->textInput(['maxlength' => true]) ?>

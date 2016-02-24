@@ -29,7 +29,7 @@ class GoodController extends Controller
 				'rules' => [
 					[
 						'allow' => true,
-						'actions' => ['index', 'view', 'create', 'update', 'delete'],
+						'actions' => ['index', 'view', 'create', 'update', 'delete' ,'price'],
 						'roles' => ['@'],
 					],
 				],
@@ -128,5 +128,11 @@ class GoodController extends Controller
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
         }
+    }
+
+    public function actionPrice($id)
+    {
+        $model = $this->findModel($id);
+        return $model->price;
     }
 }
