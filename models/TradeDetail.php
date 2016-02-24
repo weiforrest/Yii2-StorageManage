@@ -5,23 +5,25 @@ namespace app\models;
 use Yii;
 
 /**
- * This is the model class for table "input_detail".
+ * This is the model class for table "trade_detail".
  *
- * @property integer $input_id
+ * @property integer $id
+ * @property integer $trade_id
  * @property integer $good_id
  * @property integer $count
+ * @property string $price
  *
- * @property Input $input
+ * @property Trade $trade
  * @property Good $good
  */
-class InputDetail extends \yii\db\ActiveRecord
+class TradeDetail extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc
      */
     public static function tableName()
     {
-        return 'input_detail';
+        return 'trade_detail';
     }
 
     /**
@@ -30,8 +32,9 @@ class InputDetail extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['good_id', 'count'], 'required'],
-            [['input_id', 'good_id', 'count'], 'integer']
+            [['good_id', 'count', 'price'], 'required'],
+            [['trade_id', 'good_id', 'count'], 'integer'],
+            [['price'], 'number']
         ];
     }
 
@@ -41,19 +44,20 @@ class InputDetail extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-			'id' => Yii::t('app', 'ID'),
-            'input_id' => Yii::t('app', 'Input ID'),
+            'id' => Yii::t('app', 'ID'),
+            'trade_id' => Yii::t('app', 'Trade ID'),
             'good_id' => Yii::t('app', 'Good'),
             'count' => Yii::t('app', 'Count'),
+            'price' => Yii::t('app', 'Price'),
         ];
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getInput()
+    public function getTrade()
     {
-        return $this->hasOne(Input::className(), ['id' => 'input_id']);
+        return $this->hasOne(Trade::className(), ['trade_id' => 'trade_id']);
     }
 
     /**

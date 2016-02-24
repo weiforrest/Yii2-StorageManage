@@ -40,20 +40,19 @@ return [
 	'Telphone' => '电话',
 	'Time' => '创建时间',
 
-
-	//Customer
-	'Customer' => '顾客',
-	'Customers' => '顾客',
-	'Create Customer' => '创建顾客',
-	'Customer ID' => '顾客 ID',
-	'Telphone' => '电话',
-	'Time' => '创建时间',
-
 	//Input
 	'Input ID' => '入库 ID',
 	'Create Input' => '创建入库',
 	'Input' => '入库',
 	'Count' => '件数',
 	'Details' => '详情',
+
+	//Trade
+	'Trades' => '发货',
+	'Trade ID' => '发货 ID',
+	'Money' => '金额',
+	'Create Trade' => '创建发货',
+    'Select Good' => '选择商品',
+    'Select Customer' => '选择顾客'
 
 ];

@@ -22,18 +22,22 @@ CREATE TABLE trade(
 	customer_id INT UNSIGNED NOT NULL,
 	time  TIMESTAMP NOT NULL DEFAULT NOW(),
 	money DECIMAL(10,2) NOT NULL,
+	state ENUM('U','D') NOT NULL, DEFAULT 'U',
 	PRIMARY KEY(trade_id),
 	INDEX(customer_id),
 	FOREIGN KEY(customer_id) REFERENCES customer (customer_id)
 ) ENGINE = InnoDB;
 
 CREATE TABLE trade_detail(
+	id INT UNSIGNED NOT NULL AUTO_INCREMENT,
 	trade_id INT UNSIGNED NOT NULL,
 	good_id INT UNSIGNED NOT NULL,
 	count INT UNSIGNED NOT NULL,
-	PRIMARY KEY(trade_id, good_id),
+	price DECIMAL(10,2) NOT NULL,
+	PRIMARY KEY(id),
 	INDEX(good_id),
-	FOREIGN KEY(trade_id) REFERENCES trade (trade_id),
+	INDEX(trade_id),
+	FOREIGN KEY(trade_id) REFERENCES trade (id),
 	FOREIGN KEY(good_id) REFERENCES good (good_id)
 ) ENGINE = InnoDB;
 
@@ -45,30 +49,32 @@ CREATE TABLE card(
 ) ENGINE  = InnoDB;
 
 CREATE TABLE receive_money(
-	receive_id INT UNSIGNED NOT NULL AUTO_INCREMENT,
-	customer_id INT UNSIGNED NOT NULL,
+	id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+	trade_id int UNSIGNED NOT NULL,
 	card_id INT UNSIGNED NOT NULL,
 	time TIMESTAMP NOT NULL DEFAULT NOW(),
 	money DECIMAL(10,2) NOT NULL,
-	PRIMARY KEY(receive_id),
-	INDEX(customer_id),
+	PRIMARY KEY(id),
 	INDEX(card_id),
-	FOREIGN KEY(customer_id) REFERENCES customer (customer_id),
-	FOREIGN KEY(card_id) REFERENCES card (card_id)
+	INDEX (trade_id),
+	FOREIGN KEY(card_id) REFERENCES card (card_id),
+	FOREIGN KEY(trade_Id) REFERENCES trade (id)
 ) ENGINE = InnoDB;
 
 CREATE TABLE input(
-	input_id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+	id INT UNSIGNED NOT NULL AUTO_INCREMENT,
 	time TIMESTAMP NOT NULL DEFAULT NOW(),
 	PRIMARY KEY(input_id)
 ) ENGINE  = InnoDB;
 
 CREATE TABLE input_detail(
+  id INT UNSIGNED NOT NULL AUTO_INCREMENT,
 	input_id INT UNSIGNED NOT NULL,
 	good_id INT UNSIGNED NOT NULL,
-	PRIMARY KEY(input_id, good_id),
+	PRIMARY KEY(id),
+  INDEX (input_id),
 	INDEX(good_id),
 	count INT UNSIGNED NOT NULL,
-	FOREIGN KEY(input_id) REFERENCES input (input_id),
+	FOREIGN KEY(input_id) REFERENCES input (id),
 	FOREIGN KEY(good_id) REFERENCES good (good_id)
 ) ENGINE = InnoDB;
