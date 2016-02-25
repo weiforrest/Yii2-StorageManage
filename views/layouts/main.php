@@ -42,7 +42,7 @@ AppAsset::register($this);
 			['label' => Yii::t('app', 'Inputs'), 'url' => ['/input/index']],
             ['label' => Yii::t('app', 'Goods'), 'url' => ['/good/index']],
 			['label' => Yii::t('app', 'Cards'), 'url' => ['/card/index']],
-            ['label' => 'About', 'url' => ['/site/about']],
+//            ['label' => 'About', 'url' => ['/site/about']],
 			['label' => Yii::t('app', 'Admin'), 'url' => ['/user/admin']],
             Yii::$app->user->isGuest ?
                 ['label' => Yii::t('app', 'Login'), 'url' => ['/user/login']] :

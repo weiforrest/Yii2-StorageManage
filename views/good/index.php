@@ -33,6 +33,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
+		'bordered' => false,
 		'toolbar' => [
 			['content' => Html::button(Yii::t('app', 'Create Good'),
 				['value' => Url::to('index.php?r=good/create'),
@@ -48,10 +49,22 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'kartik\grid\SerialColumn'],
 
             //'good_id',
-            'name',
-            'unit',
-            'price',
-            'cost',
+            [
+				'attribute' => 'name',
+                'hAlign' => 'center',
+			],
+            [
+				'attribute' => 'unit',
+                'hAlign' => 'center',
+			],
+            [
+				'attribute' => 'price',
+                'hAlign' => 'center',
+			],
+            [
+				'attribute' => 'cost',
+                'hAlign' => 'center',
+			],
             // 'enable',
 
             ['class' => 'kartik\grid\ActionColumn'],

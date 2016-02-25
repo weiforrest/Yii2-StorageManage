@@ -31,6 +31,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
+		'bordered' => false,
 		'toolbar' => [
 			['content' => Html::button(Yii::t('app', 'Create Card'),
 				['value' => Url::to('index.php?r=card/create'),
@@ -46,9 +47,14 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'kartik\grid\SerialColumn'],
 
             //'card_id',
-            'name',
-            'card_number',
-
+			[
+				'attribute' => 'name',
+				'hAlign' => 'center',
+			],
+			[
+				'attribute' => 'card_number',
+				'hAlign' => 'center',
+			],
             ['class' => 'kartik\grid\ActionColumn'],
         ],
     ]); ?>

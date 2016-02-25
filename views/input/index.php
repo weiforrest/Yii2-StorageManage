@@ -22,6 +22,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
+        'bordered' => false,
         'toolbar' => [
             ['content' => Html::a(Yii::t('app', 'Create Input'),
                     ['create'],
