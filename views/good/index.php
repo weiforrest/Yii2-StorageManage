@@ -1,7 +1,7 @@
 <?php
 
 use yii\helpers\Html;
-use yii\grid\GridView;
+use kartik\grid\GridView;
 use yii\widgets\Pjax;
 use yii\bootstrap\Modal;
 use yii\helpers\Url;
@@ -15,15 +15,8 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="good-index">
 
-    <h1><?= Html::encode($this->title) ?></h1>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
-    <p>
-		<?= Html::button(Yii::t('app', 'Create Good'),
-			[ 'value' => Url::to('index.php?r=good/create'),
-		   	'id' => 'modalButton',
-		   	'class' => 'btn btn-success']) ?>
-    </p>
 
 	<?php Modal::begin([
 		'header' => '<h1>'.Yii::t('app', 'Create Good').'</h1>',
@@ -40,8 +33,19 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
+		'toolbar' => [
+			['content' => Html::button(Yii::t('app', 'Create Good'),
+				['value' => Url::to('index.php?r=good/create'),
+					'id' => 'modalButton',
+					'class' => 'btn btn-success'])
+			],
+		],
+		'panel' => [
+			'type' => GridView::TYPE_PRIMARY,
+			'heading' => Yii::t('app', 'Good'),
+		],
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+            ['class' => 'kartik\grid\SerialColumn'],
 
             //'good_id',
             'name',
@@ -50,7 +54,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'cost',
             // 'enable',
 
-            ['class' => 'yii\grid\ActionColumn'],
+            ['class' => 'kartik\grid\ActionColumn'],
         ],
     ]); ?>
 <?php Pjax::end(); ?>

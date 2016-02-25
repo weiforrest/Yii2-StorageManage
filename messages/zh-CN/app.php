@@ -53,6 +53,8 @@ return [
 	'Money' => '金额',
 	'Create Trade' => '创建发货',
     'Select Good' => '选择商品',
-    'Select Customer' => '选择顾客'
+    'Select Customer' => '选择顾客',
+    'Total' => '总计',
+    'Summary' => '总价',
 
 ];

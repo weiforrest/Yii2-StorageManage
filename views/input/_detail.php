@@ -5,7 +5,8 @@ use yii\grid\GridView;
 
 <?= GridView::widget([
     'dataProvider' => $dataProvider,
-    'filterModel' => $searchModel,
+    'layout' => '{items}{pager}',
+//    'filterModel' => $searchModel,
     'columns' => [
         ['class' => 'yii\grid\SerialColumn'],
         [

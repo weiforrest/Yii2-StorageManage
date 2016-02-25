@@ -76,10 +76,16 @@ class InputSearch extends Input
             // $query->where('0=1');
             return $dataProvider;
         }
+        if(isset($this->time) && $this->time != '') {
+            $date_explode = explode(" to ", $this->time);
+            $date1 = trim($date_explode[0]);
+            $date2 = trim($date_explode[1]);
+            $date2 = date("Y-m-d", strtotime("+1 day", strtotime($date2)));
+            $query->andFilterWhere(['between', 'time', $date1, $date2]);
+        }
 
         $query->andFilterWhere([
             'id' => $this->id,
-            'time' => $this->time,
             'detailSum.detail_count' => $this->detailCount,
         ]);
 

@@ -16,19 +16,31 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="trade-index">
 
-    <h1><?= Html::encode($this->title) ?></h1>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
-
-    <p>
-        <?= Html::a(Yii::t('app', 'Create Trade'), ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
 
     <?php Pjax::begin(); ?>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
+        'toolbar' => [
+            ['content' => Html::a(Yii::t('app', 'Create Trade'),
+                ['create'],
+                ['class' => 'btn btn-success'])
+            ],
+        ],
+        'panel' => [
+            'type' => GridView::TYPE_PRIMARY,
+            'heading' => Yii::t('app', 'Trades'),
+        ],
+//        'pageSummaryRowOptions' => [
+//            'class' => 'kv-page-summary warning',
+//        ],
         'columns' => [
+            [
+                'class' => 'kartik\grid\SerialColumn',
+                'width' => '5%'
+            ],
             [
                 'class' => 'kartik\grid\ExpandRowColumn',
                 'value' => function ($model, $key, $index, $column) {
@@ -45,17 +57,43 @@ $this->params['breadcrumbs'][] = $this->title;
                     ]);
                 },
             ],
-
-            'id',
-            'time',
+            [
+                'attribute' => 'time',
+                'format' => ['date','php:Y-m-d'],
+                'hAlign' => 'center',
+                'filterType' => GridView::FILTER_DATE_RANGE,
+                'filterWidgetOptions' => [
+                    'presetDropdown' => true,
+//                    'hideInput' => true,
+                    'pluginOptions' => [
+                        'locale' => [
+                            'separator' => ' to ',
+                            'format' => 'YYYY-MM-DD',
+                        ],
+                    ],
+                ],
+            ],
             [
                 'attribute' => 'customer_id',
                 'value' => 'customer.name',
+                'hAlign' => 'center',
+                'pageSummary' => Yii::t('app','Total'),
             ],
-            'money',
-            'detailCount',
-            ['class' => 'yii\grid\ActionColumn'],
+            [
+//                'class' => 'kartik\grid\EditableColumn',
+                'attribute' => 'money',
+                'hAlign' => 'center',
+                'format' => ['decimal', 2],
+                'pageSummary' => true,
+            ],
+            [
+                'attribute' => 'detailCount',
+                'hAlign' => 'center',
+                'pageSummary' => true,
+            ],
+            ['class' => 'kartik\grid\ActionColumn'],
         ],
+        'showPageSummary' => true,
     ]); ?>
     <?php Pjax::end(); ?>
 
