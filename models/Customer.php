@@ -34,7 +34,8 @@ class Customer extends \yii\db\ActiveRecord
             [['name'], 'required'],
             [['time'], 'safe'],
             [['name'], 'string', 'max' => 128],
-            [['telphone'], 'string', 'max' => 64]
+            [['telphone'], 'string', 'max' => 64],
+            [['unpay', 'payed','sum'], 'number']
         ];
     }
 
@@ -48,6 +49,9 @@ class Customer extends \yii\db\ActiveRecord
             'name' => Yii::t('app', 'Name'),
             'telphone' => Yii::t('app', 'Telphone'),
             'time' => Yii::t('app', 'Time'),
+            'unpay' => Yii::t('app', 'Unpay'),
+            'payed' => Yii::t('app', 'Payed'),
+            'sum' => Yii::t('app', 'Sum')
         ];
     }
 

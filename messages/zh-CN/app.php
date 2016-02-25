@@ -39,6 +39,9 @@ return [
 	'Customer ID' => '顾客 ID',
 	'Telphone' => '电话',
 	'Time' => '创建时间',
+    'Sum' => '总金额',
+    'Payed' => '已结',
+    'Unpay' => '未结',
 
 	//Input
 	'Input ID' => '入库 ID',
