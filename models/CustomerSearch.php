@@ -55,9 +55,16 @@ class CustomerSearch extends Customer
             return $dataProvider;
         }
 
+        if(isset($this->time) && $this->time != '') {
+            $date_explode = explode(" to ", $this->time);
+            $date1 = trim($date_explode[0]);
+            $date2 = trim($date_explode[1]);
+            $date2 = date("Y-m-d", strtotime("+1 day", strtotime($date2)));
+            $query->andFilterWhere(['between', 'time', $date1, $date2]);
+        }
+
         $query->andFilterWhere([
             'customer_id' => $this->customer_id,
-            'time' => $this->time,
         ]);
 
         $query->andFilterWhere(['like', 'name', $this->name])

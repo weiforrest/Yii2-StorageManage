@@ -71,10 +71,17 @@ class TradeSearch extends Trade
             return $dataProvider;
         }
 
+        if(isset($this->time) && $this->time != '') {
+            $date_explode = explode(" to ", $this->time);
+            $date1 = trim($date_explode[0]);
+            $date2 = trim($date_explode[1]);
+            $date2 = date("Y-m-d", strtotime("+1 day", strtotime($date2)));
+            $query->andFilterWhere(['between', 'trade.time', $date1, $date2]);
+        }
+
         $query->joinwith('customer');
         $query->andFilterWhere([
             'id' => $this->id,
-            'time' => $this->time,
             'money' => $this->money,
             'detailSum.detail_count' => $this->detailCount,
         ]);

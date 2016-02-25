@@ -1,7 +1,7 @@
 <?php
 
 use yii\helpers\Html;
-use yii\grid\GridView;
+use kartik\grid\GridView;
 use yii\widgets\Pjax;
 use yii\bootstrap\Modal;
 use yii\helpers\Url;
@@ -15,16 +15,8 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="card-index">
 
-    <h1><?= Html::encode($this->title) ?></h1>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
-    <p>
-		<?= Html::button(Yii::t('app', 'Create Card'), [
-			'value' => Url::to('index.php?r=card/create'),
-		   	'id' => 'modalButton',
-			'class' => 'btn btn-success'])
-		?>
-    </p>
 
 	<?php Modal::begin([
 		'header' => '<h1>'.Yii::t('app', 'Create Card').'</h1>',
@@ -39,14 +31,25 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
+		'toolbar' => [
+			['content' => Html::button(Yii::t('app', 'Create Card'),
+				['value' => Url::to('index.php?r=card/create'),
+					'id' => 'modalButton',
+					'class' => 'btn btn-success'])
+			],
+		],
+		'panel' => [
+			'type' => GridView::TYPE_PRIMARY,
+			'heading' => Yii::t('app', 'Card'),
+		],
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+            ['class' => 'kartik\grid\SerialColumn'],
 
             //'card_id',
             'name',
             'card_number',
 
-            ['class' => 'yii\grid\ActionColumn'],
+            ['class' => 'kartik\grid\ActionColumn'],
         ],
     ]); ?>
 <?php Pjax::end(); ?>
