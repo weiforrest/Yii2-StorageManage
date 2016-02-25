@@ -21,7 +21,7 @@ class TradeSearch extends Trade
     {
         return [
             [['id', 'customer_id'], 'integer'],
-            [['time', 'done', 'detailCount'], 'safe'],
+            [['time', 'detailCount'], 'safe'],
             [['money'], 'number'],
         ];
     }
@@ -52,6 +52,11 @@ class TradeSearch extends Trade
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            'sort' => [
+                'defaultOrder' => [
+                    'time' => SORT_DESC,
+                ],
+            ],
         ]);
 
         /*
@@ -86,7 +91,6 @@ class TradeSearch extends Trade
             'detailSum.detail_count' => $this->detailCount,
         ]);
 
-        $query->andFilterWhere(['like', 'done', $this->done]);
         $query->andFilterWhere(['like', 'customer.name', $this->customer_id]);
 
         return $dataProvider;

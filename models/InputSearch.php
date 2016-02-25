@@ -58,6 +58,11 @@ class InputSearch extends Input
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            'sort' => [
+                'defaultOrder' => [
+                    'time' => SORT_DESC,
+                ],
+            ],
         ]);
 
 		/*
