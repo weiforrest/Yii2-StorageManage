@@ -22,6 +22,9 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
+        'tableOptions' => [
+            'style'=>'text-align:center',
+        ],
         'rowOptions' => ['class' => 'danger'],
         'bordered' => false,
         'toolbar' => [
@@ -59,7 +62,6 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'attribute' => 'time',
                 'width' => '30%',
-                'hAlign' => 'center',
                 'format' => ['date','php:Y-m-d'],
                 'filterType' => GridView::FILTER_DATE_RANGE,
                 'filterWidgetOptions' => [
@@ -77,13 +79,11 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'attribute' => 'detailCount',
                 'width' => '20%',
-                'hAlign' => 'center',
                 'pageSummary' => true,
             ],
             [
                 'attribute' => 'money',
                 'width' => '15%',
-                'hAlign' => 'center',
                 'pageSummary' => true,
             ],
             [

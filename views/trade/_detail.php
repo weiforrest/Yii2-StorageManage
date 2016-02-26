@@ -6,6 +6,9 @@ use kartik\grid\GridView;
 <?= GridView::widget([
     'dataProvider' => $dataProvider,
     'condensed' => true,
+    'tableOptions' => [
+        'style'=>'text-align:center',
+    ],
     'rowOptions' => [
         'class' => 'info',
     ],
@@ -15,23 +18,18 @@ use kartik\grid\GridView;
     'columns' => [
         [
             'class' => 'kartik\grid\SerialColumn',
-            'hAlign' => 'center',
         ],
         [
             'attribute' => 'good_id',
             'value' => 'good.name',
-            'hAlign' => 'center',
         ],
         [
             'attribute' => 'count',
-            'hAlign' => 'center',
         ],
         [
             'attribute' => 'price',
-            'hAlign' => 'center',
         ],
         [
-            'hAlign' => 'center',
             'label' => Yii::t('app','Summary'),
             'format' => ['decimal', 2],
             'class' => 'kartik\grid\FormulaColumn',

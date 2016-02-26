@@ -6,6 +6,9 @@ use kartik\grid\GridView;
 <?= GridView::widget([
     'dataProvider' => $dataProvider,
     'condensed' => true,
+    'tableOptions' => [
+        'style'=>'text-align:center',
+    ],
     'layout' => '{items}{pager}',
     'rowOptions' => ['class' => 'info'],
 //    'filterModel' => $searchModel,
@@ -14,11 +17,18 @@ use kartik\grid\GridView;
         [
             'attribute' => 'good_id',
             'value' => 'good.name',
-            'hAlign' => 'center',
         ],
         [
             'attribute' => 'count',
-            'hAlign' => 'center',
         ],
+        [
+            'label' => Yii::t('app', 'Summary'),
+            'format' => ['decimal', 2],
+            'class' => 'kartik\grid\FormulaColumn',
+            'value' => function($model, $key, $index, $widget) {
+                return $model->count * $model->good->price;
+            }
+
+        ]
     ],
 ]) ?>

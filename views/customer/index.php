@@ -30,6 +30,9 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
+        'tableOptions' => [
+            'style'=>'text-align:center',
+        ],
         'bordered' => false,
         'toolbar' => [
             ['content' => Html::button(Yii::t('app', 'Create Customer'),
@@ -50,7 +53,6 @@ $this->params['breadcrumbs'][] = $this->title;
 
             //'customer_id',
 			[
-				'hAlign' => 'center',
 				'attribute' => 'name',
                 'format' => 'raw',
                 'width' => '10%',
@@ -61,13 +63,11 @@ $this->params['breadcrumbs'][] = $this->title;
                 }
 			],
 			[
-				'hAlign' => 'center',
                 'width' => '20%',
 				'attribute' => 'telphone',
 			],
 			[
 				'attribute' => 'time',
-				'hAlign' => 'center',
 				'format' => ['datetime','php:Y-m-d'],
 				'filterType' => GridView::FILTER_DATE_RANGE,
 				'filterWidgetOptions' => [
@@ -84,19 +84,16 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'attribute' => 'sum',
                 'width' => '10%',
-                'hAlign' => 'center',
                 'format' => ['decimal', 2],
             ],
             [
                 'attribute' => 'payed',
                 'width' => '10%',
-                'hAlign' => 'center',
                 'format' => ['decimal', 2],
             ],
             [
                 'attribute' => 'unpay',
                 'width' => '10%',
-                'hAlign' => 'center',
                 'format' => ['decimal', 2],
             ],
 //            ['class' => 'kartik\grid\ActionColumn'],

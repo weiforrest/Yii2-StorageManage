@@ -33,6 +33,9 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
+        'tableOptions' => [
+            'style'=>'text-align:center',
+        ],
 		'bordered' => false,
 		'toolbar' => [
 			['content' => Html::button(Yii::t('app', 'Create Good'),
@@ -51,7 +54,6 @@ $this->params['breadcrumbs'][] = $this->title;
             //'good_id',
             [
 				'attribute' => 'name',
-                'hAlign' => 'center',
 				'format' => 'raw',
 				'width' => '20%',
 				'value' => function ($model, $key, $index, $widget) {
@@ -62,15 +64,12 @@ $this->params['breadcrumbs'][] = $this->title;
 			],
             [
 				'attribute' => 'unit',
-                'hAlign' => 'center',
 			],
             [
 				'attribute' => 'price',
-                'hAlign' => 'center',
 			],
             [
 				'attribute' => 'cost',
-                'hAlign' => 'center',
 			],
             // 'enable',
 

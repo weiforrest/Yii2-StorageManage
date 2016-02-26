@@ -24,6 +24,9 @@ $this->params['breadcrumbs'][] = $this->title;
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'bordered' => false,
+        'tableOptions' => [
+            'style'=>'text-align:center',
+        ],
         'rowOptions' => ['class' => 'danger'],
         'toolbar' => [
             ['content' => Html::a(Yii::t('app', 'Create Trade'),
@@ -62,7 +65,6 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'attribute' => 'time',
                 'format' => ['date','php:Y-m-d'],
-                'hAlign' => 'center',
                 'filterType' => GridView::FILTER_DATE_RANGE,
                 'filterWidgetOptions' => [
                     'presetDropdown' => true,
@@ -78,19 +80,16 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'attribute' => 'customer_id',
                 'value' => 'customer.name',
-                'hAlign' => 'center',
                 'pageSummary' => Yii::t('app','Total'),
             ],
             [
 //                'class' => 'kartik\grid\EditableColumn',
                 'attribute' => 'money',
-                'hAlign' => 'center',
                 'format' => ['decimal', 2],
                 'pageSummary' => true,
             ],
             [
                 'attribute' => 'detailCount',
-                'hAlign' => 'center',
                 'pageSummary' => true,
             ],
             ['class' => 'kartik\grid\ActionColumn',

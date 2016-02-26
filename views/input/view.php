@@ -32,6 +32,10 @@ $this->params['breadcrumbs'][] = $this->title;
 <?php Pjax::begin(); ?>
 	<?= GridView::widget([
 		'dataProvider' => $dataProvider,
+        'tableOptions' => [
+            'style'=>'text-align:center',
+            'class' => 'table table-striped table-bordered',
+        ],
         'filterModel' => $searchModel,
 		'columns' => [
 			['class' => 'yii\grid\SerialColumn'],
@@ -40,6 +44,14 @@ $this->params['breadcrumbs'][] = $this->title;
 				'value' => 'good.name',
 			],
 			'count',
+            [
+                'label' => Yii::t('app', 'Summary'),
+                'class' => 'yii\grid\DataColumn',
+                'format' => ['decimal', 2],
+                'value' => function($model){
+                    return $model->count * $model->good->price;
+                }
+            ]
 		],
 	]) ?>
 <?php Pjax::end(); ?>
