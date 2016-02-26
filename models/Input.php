@@ -30,7 +30,8 @@ class Input extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['time'], 'safe']
+            [['time'], 'safe'],
+			[['money'], 'number']
         ];
     }
 
@@ -43,6 +44,7 @@ class Input extends \yii\db\ActiveRecord
             'id' => Yii::t('app', 'Input ID'),
             'time' => Yii::t('app', 'Time'),
 			'detailCount' => Yii::t('app', 'Count'),
+			'money' => Yii::t('app', 'Money'),
         ];
     }
 

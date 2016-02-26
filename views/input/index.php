@@ -22,6 +22,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
+        'rowOptions' => ['class' => 'danger'],
         'bordered' => false,
         'toolbar' => [
             ['content' => Html::a(Yii::t('app', 'Create Input'),
@@ -57,7 +58,7 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
             [
                 'attribute' => 'time',
-                'width' => '40%',
+                'width' => '30%',
                 'hAlign' => 'center',
                 'format' => ['date','php:Y-m-d'],
                 'filterType' => GridView::FILTER_DATE_RANGE,
@@ -75,12 +76,20 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
             [
                 'attribute' => 'detailCount',
-                'width' => '33%',
+                'width' => '20%',
+                'hAlign' => 'center',
+                'pageSummary' => true,
+            ],
+            [
+                'attribute' => 'money',
+                'width' => '15%',
                 'hAlign' => 'center',
                 'pageSummary' => true,
             ],
             [
                 'class' => 'kartik\grid\ActionColumn',
+                'updateOptions' => ['hidden'=> true],
+                'deleteOptions' => ['hidden' => true],
             ],
         ],
         'showPageSummary' => true,

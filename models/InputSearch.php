@@ -22,6 +22,7 @@ class InputSearch extends Input
         return [
             [['id'], 'integer'],
             [['time', 'detailCount'], 'safe'],
+            [['money'], 'number'],
         ];
     }
 
@@ -30,6 +31,7 @@ class InputSearch extends Input
         return [
             'id' => Yii::t('app', 'Input ID'),
             'time' => Yii::t('app', 'Time'),
+            'money' => Yii::t('app', 'Money'),
         ];
     }
     /**
@@ -87,11 +89,14 @@ class InputSearch extends Input
             $date2 = trim($date_explode[1]);
             $date2 = date("Y-m-d", strtotime("+1 day", strtotime($date2)));
             $query->andFilterWhere(['between', 'time', $date1, $date2]);
+//        } else {
+//            $query->where('date_format(time, "%Y%m") = date_format(curdate(), "%Y%m")');
         }
 
         $query->andFilterWhere([
             'id' => $this->id,
             'detailSum.detail_count' => $this->detailCount,
+            'money' => $this->money,
         ]);
 
         return $dataProvider;

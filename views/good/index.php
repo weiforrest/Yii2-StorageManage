@@ -52,6 +52,13 @@ $this->params['breadcrumbs'][] = $this->title;
             [
 				'attribute' => 'name',
                 'hAlign' => 'center',
+				'format' => 'raw',
+				'width' => '20%',
+				'value' => function ($model, $key, $index, $widget) {
+					return Html::a($model->name,
+						'index.php?r=good%2Fview&id='.$model->good_id
+					);
+				}
 			],
             [
 				'attribute' => 'unit',
@@ -67,7 +74,7 @@ $this->params['breadcrumbs'][] = $this->title;
 			],
             // 'enable',
 
-            ['class' => 'kartik\grid\ActionColumn'],
+//            ['class' => 'kartik\grid\ActionColumn'],
         ],
     ]); ?>
 <?php Pjax::end(); ?>

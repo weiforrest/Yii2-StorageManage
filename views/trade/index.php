@@ -24,6 +24,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'bordered' => false,
+        'rowOptions' => ['class' => 'danger'],
         'toolbar' => [
             ['content' => Html::a(Yii::t('app', 'Create Trade'),
                 ['create'],
@@ -47,7 +48,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'value' => function ($model, $key, $index, $column) {
                     return GridView::ROW_COLLAPSED;
                 },
-                'detail' => function ($model, $key, $index, $columu) {
+                'detail' => function ($model, $key, $index, $column) {
                     $searchModel = new TradeDetailSearch();
                     $searchModel->trade_id = $model->id;
                     $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
@@ -92,7 +93,10 @@ $this->params['breadcrumbs'][] = $this->title;
                 'hAlign' => 'center',
                 'pageSummary' => true,
             ],
-            ['class' => 'kartik\grid\ActionColumn'],
+            ['class' => 'kartik\grid\ActionColumn',
+                'updateOptions' => ['hidden'=> true],
+                'deleteOptions' => ['hidden' => true],
+            ],
         ],
         'showPageSummary' => true,
     ]); ?>

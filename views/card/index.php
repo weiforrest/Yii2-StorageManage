@@ -50,12 +50,19 @@ $this->params['breadcrumbs'][] = $this->title;
 			[
 				'attribute' => 'name',
 				'hAlign' => 'center',
+				'format' => 'raw',
+				'width' => '40%',
+				'value' => function ($model, $key, $index, $widget) {
+					return Html::a($model->name,
+						'index.php?r=card%2Fview&id='.$model->card_id
+					);
+				}
 			],
 			[
 				'attribute' => 'card_number',
 				'hAlign' => 'center',
 			],
-            ['class' => 'kartik\grid\ActionColumn'],
+//            ['class' => 'kartik\grid\ActionColumn'],
         ],
     ]); ?>
 <?php Pjax::end(); ?>

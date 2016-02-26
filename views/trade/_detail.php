@@ -5,18 +5,33 @@ use kartik\grid\GridView;
 
 <?= GridView::widget([
     'dataProvider' => $dataProvider,
+    'condensed' => true,
+    'rowOptions' => [
+        'class' => 'info',
+    ],
     'layout' => '{items}{pager}',
 //    'filterModel' => $searchModel,
 //    'summary' => "Showing {begin} - {end} of {totalCount} items",
     'columns' => [
-        ['class' => 'yii\grid\SerialColumn'],
+        [
+            'class' => 'kartik\grid\SerialColumn',
+            'hAlign' => 'center',
+        ],
         [
             'attribute' => 'good_id',
             'value' => 'good.name',
+            'hAlign' => 'center',
         ],
-        'count',
-        'price',
         [
+            'attribute' => 'count',
+            'hAlign' => 'center',
+        ],
+        [
+            'attribute' => 'price',
+            'hAlign' => 'center',
+        ],
+        [
+            'hAlign' => 'center',
             'label' => Yii::t('app','Summary'),
             'format' => ['decimal', 2],
             'class' => 'kartik\grid\FormulaColumn',
