@@ -18,53 +18,53 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
 
-	<?php Modal::begin([
-		'header' => '<h1>'.Yii::t('app', 'Create Card').'</h1>',
-		'id' => 'modal',
-		'size' => 'modal-lg',
-	]);
-	echo "<div id = 'modalContent'></div>";
-	Modal::end();
-	?>
+<?php Modal::begin([
+    'header' => '<h1>'.Yii::t('app', 'Create Card').'</h1>',
+    'id' => 'modal',
+    'size' => 'modal-lg',
+]);
+echo "<div id = 'modalContent'></div>";
+Modal::end();
+?>
 
 <?php Pjax::begin(); ?>
-    <?= GridView::widget([
-        'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
-        'tableOptions' => [
-            'style'=>'text-align:center',
-        ],
-		'bordered' => false,
-		'toolbar' => [
-			['content' => Html::button(Yii::t('app', 'Create Card'),
-				['value' => Url::to('index.php?r=card/create'),
-					'id' => 'modalButton',
-					'class' => 'btn btn-success'])
-			],
-		],
-		'panel' => [
-			'type' => GridView::TYPE_PRIMARY,
-			'heading' => Yii::t('app', 'Card'),
-		],
-        'columns' => [
-            ['class' => 'kartik\grid\SerialColumn'],
+<?= GridView::widget([
+    'dataProvider' => $dataProvider,
+    'filterModel' => $searchModel,
+    'tableOptions' => [
+        'style'=>'text-align:center',
+    ],
+    'bordered' => false,
+    'toolbar' => [
+        ['content' => Html::button(Yii::t('app', 'Create Card'),
+        ['value' => Url::to('index.php?r=card/create'),
+        'id' => 'modalButton',
+        'class' => 'btn btn-success'])
+    ],
+],
+'panel' => [
+    'type' => GridView::TYPE_PRIMARY,
+    'heading' => Yii::t('app', 'Card'),
+],
+'columns' => [
+    ['class' => 'kartik\grid\SerialColumn'],
 
-            //'card_id',
-			[
-				'attribute' => 'name',
-				'format' => 'raw',
-				'width' => '40%',
-				'value' => function ($model, $key, $index, $widget) {
-					return Html::a($model->name,
-						'index.php?r=card%2Fview&id='.$model->card_id
-					);
-				}
-			],
-			[
-				'attribute' => 'card_number',
-			],
-//            ['class' => 'kartik\grid\ActionColumn'],
-        ],
+    //'card_id',
+    [
+        'attribute' => 'name',
+        'format' => 'raw',
+        'width' => '40%',
+        'value' => function ($model, $key, $index, $widget) {
+            return Html::a($model->name,
+                'index.php?r=card%2Fview&id='.$model->card_id
+            );
+        }
+],
+    [
+        'attribute' => 'card_number',
+    ],
+    //            ['class' => 'kartik\grid\ActionColumn'],
+],
     ]); ?>
 <?php Pjax::end(); ?>
 </div>

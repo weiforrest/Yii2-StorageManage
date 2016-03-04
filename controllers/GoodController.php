@@ -9,6 +9,7 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
+use yii\web\Response;
 
 /**
  * GoodController implements the CRUD actions for Good model.
@@ -24,16 +25,16 @@ class GoodController extends Controller
                     'delete' => ['post'],
                 ],
             ],
-			'access' => [
-				'class' => AccessControl::className(),
-				'rules' => [
-					[
-						'allow' => true,
-						'actions' => ['index', 'view', 'create', 'update', 'delete' ,'price'],
-						'roles' => ['@'],
-					],
-				],
-			],
+            'access' => [
+                'class' => AccessControl::className(),
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'actions' => ['index', 'view', 'create', 'update', 'delete' ,'prices'],
+                        'roles' => ['@'],
+                    ],
+                ],
+            ],
         ];
     }
 
@@ -130,9 +131,12 @@ class GoodController extends Controller
         }
     }
 
-    public function actionPrice($id)
+    public function actionPrices()
     {
-        $model = $this->findModel($id);
-        return $model->price;
+        $good = Good::find()->select(["good_id", "price"])->asArray()->all();
+
+        Yii::$app->response->format = Response::FORMAT_JSON;
+        //return print_r($good);
+        return json_encode($good);
     }
 }

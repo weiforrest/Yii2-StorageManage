@@ -54,8 +54,8 @@ class InputSearch extends Input
     {
         $query = Input::find();
         $subquery = InputDetail::find()
-                    ->select('input_id, SUM(count) as detail_count')
-                    ->groupBy('input_id');
+            ->select('input_id, SUM(count) as detail_count')
+            ->groupBy('input_id');
         $query->leftJoin(['detailSum' => $subquery], 'detailSum.input_id = id');
 
         $dataProvider = new ActiveDataProvider([
@@ -67,14 +67,14 @@ class InputSearch extends Input
             ],
         ]);
 
-		/*
-		 *set the count search 	
-		 */
-		$dataProvider->sort->attributes['detailCount'] = [
-					'asc' => ['detailSum.detail_count' => SORT_ASC],
-					'desc' => ['detailSum.detail_count' => SORT_DESC],
-					'label' => Yii::t('app', 'Count'),
-		];
+        /*
+         *set the count search
+         */
+        $dataProvider->sort->attributes['detailCount'] = [
+            'asc' => ['detailSum.detail_count' => SORT_ASC],
+            'desc' => ['detailSum.detail_count' => SORT_DESC],
+            'label' => Yii::t('app', 'Count'),
+        ];
 
         $this->load($params);
 
@@ -89,8 +89,8 @@ class InputSearch extends Input
             $date2 = trim($date_explode[1]);
             $date2 = date("Y-m-d", strtotime("+1 day", strtotime($date2)));
             $query->andFilterWhere(['between', 'time', $date1, $date2]);
-//        } else {
-//            $query->where('date_format(time, "%Y%m") = date_format(curdate(), "%Y%m")');
+            //        } else {
+            //            $query->where('date_format(time, "%Y%m") = date_format(curdate(), "%Y%m")');
         }
 
         $query->andFilterWhere([

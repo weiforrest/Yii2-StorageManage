@@ -19,7 +19,7 @@ class InputDetailSearch extends InputDetail
     {
         return [
             [['id', 'input_id', 'count'], 'integer'],
-			[['good_id'], 'safe'],
+            [['good_id'], 'safe'],
         ];
     }
 
@@ -55,12 +55,12 @@ class InputDetailSearch extends InputDetail
             return $dataProvider;
         }
 
-		$query->joinWith('good');
+        $query->joinWith('good');
         $query->andFilterWhere([
             'input_id' => $this->input_id,
             'count' => $this->count,
         ]);
-		$query->andFilterWhere(['like','good.name', $this->good_id]);
+        $query->andFilterWhere(['like','good.name', $this->good_id]);
 
         return $dataProvider;
     }

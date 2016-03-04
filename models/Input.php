@@ -31,7 +31,7 @@ class Input extends \yii\db\ActiveRecord
     {
         return [
             [['time'], 'safe'],
-			[['money'], 'number']
+            [['money'], 'number']
         ];
     }
 
@@ -43,8 +43,8 @@ class Input extends \yii\db\ActiveRecord
         return [
             'id' => Yii::t('app', 'Input ID'),
             'time' => Yii::t('app', 'Time'),
-			'detailCount' => Yii::t('app', 'Count'),
-			'money' => Yii::t('app', 'Money'),
+            'detailCount' => Yii::t('app', 'Count'),
+            'money' => Yii::t('app', 'Money'),
         ];
     }
 
@@ -56,14 +56,14 @@ class Input extends \yii\db\ActiveRecord
         return $this->hasMany(InputDetail::className(), ['input_id' => 'id']);
     }
 
-	/*
-	 * @return integer
-	 */
-	public function getDetailCount()
-	{
-		return $this->getInputDetails()
-				->sum('count');
-	}
+    /*
+     * @return integer
+     */
+    public function getDetailCount()
+    {
+        return $this->getInputDetails()
+            ->sum('count');
+    }
 
     /**
      * @return \yii\db\ActiveQuery
@@ -73,29 +73,29 @@ class Input extends \yii\db\ActiveRecord
         return $this->hasMany(Good::className(), ['good_id' => 'good_id'])->viaTable('input_detail', ['input_id' => 'id']);
     }
 
-	public static function createMultiple($modelClass, $multipleModels = [])
-	{
-		$model = new $modelClass;
-		$formName = $model->formName();
-		$post = Yii::$app->request->post($formName);
-		$models = [];
+    public static function createMultiple($modelClass, $multipleModels = [])
+    {
+        $model = new $modelClass;
+        $formName = $model->formName();
+        $post = Yii::$app->request->post($formName);
+        $models = [];
 
-		if(! empty($multipleModels)) {
-			$keys = array_keys(ArrayHelper::map($multipleModels, 'id', 'id'));
-			$multipleModels = array_combine($keys, $multipleModels);
-		}
+        if(! empty($multipleModels)) {
+            $keys = array_keys(ArrayHelper::map($multipleModels, 'id', 'id'));
+            $multipleModels = array_combine($keys, $multipleModels);
+        }
 
-		if($post && is_array($post)) {
-			foreach ($post as $i => $item) {
-				if (isset($item['id']) && !empty($item['id'])
-					&& isset($multipleModels[$item['id']])) {
-					$models[] = $multipleModels[$item['id']];
-				} else {
-					$models[] = new $modelClass;
-				}
-			}
-		}
-		unset($model, $formName, $post);
-		return $models;
-	}
+        if($post && is_array($post)) {
+            foreach ($post as $i => $item) {
+                if (isset($item['id']) && !empty($item['id'])
+                    && isset($multipleModels[$item['id']])) {
+                    $models[] = $multipleModels[$item['id']];
+                } else {
+                    $models[] = new $modelClass;
+                }
+            }
+        }
+        unset($model, $formName, $post);
+        return $models;
+    }
 }

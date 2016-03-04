@@ -18,63 +18,63 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
 
-	<?php Modal::begin([
-		'header' => '<h1>'.Yii::t('app', 'Create Good').'</h1>',
-		'id' => 'modal',
-		'size' => 'modal-lg',
-	]);
-	echo "<div id = 'modalContent'></div>";
-	Modal::end();
-	?>
+<?php Modal::begin([
+    'header' => '<h1>'.Yii::t('app', 'Create Good').'</h1>',
+    'id' => 'modal',
+    'size' => 'modal-lg',
+]);
+echo "<div id = 'modalContent'></div>";
+Modal::end();
+?>
 
 
 
 <?php Pjax::begin(); ?>
-    <?= GridView::widget([
-        'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
-        'tableOptions' => [
-            'style'=>'text-align:center',
-        ],
-		'bordered' => false,
-		'toolbar' => [
-			['content' => Html::button(Yii::t('app', 'Create Good'),
-				['value' => Url::to('index.php?r=good/create'),
-					'id' => 'modalButton',
-					'class' => 'btn btn-success'])
-			],
-		],
-		'panel' => [
-			'type' => GridView::TYPE_PRIMARY,
-			'heading' => Yii::t('app', 'Good'),
-		],
-        'columns' => [
-            ['class' => 'kartik\grid\SerialColumn'],
+<?= GridView::widget([
+    'dataProvider' => $dataProvider,
+    'filterModel' => $searchModel,
+    'tableOptions' => [
+        'style'=>'text-align:center',
+    ],
+    'bordered' => false,
+    'toolbar' => [
+        ['content' => Html::button(Yii::t('app', 'Create Good'),
+        ['value' => Url::to('index.php?r=good/create'),
+        'id' => 'modalButton',
+        'class' => 'btn btn-success'])
+    ],
+],
+'panel' => [
+    'type' => GridView::TYPE_PRIMARY,
+    'heading' => Yii::t('app', 'Good'),
+],
+'columns' => [
+    ['class' => 'kartik\grid\SerialColumn'],
 
-            //'good_id',
-            [
-				'attribute' => 'name',
-				'format' => 'raw',
-				'width' => '20%',
-				'value' => function ($model, $key, $index, $widget) {
-					return Html::a($model->name,
-						'index.php?r=good%2Fview&id='.$model->good_id
-					);
-				}
-			],
-            [
-				'attribute' => 'unit',
-			],
-            [
-				'attribute' => 'price',
-			],
-            [
-				'attribute' => 'cost',
-			],
-            // 'enable',
+    //'good_id',
+    [
+        'attribute' => 'name',
+        'format' => 'raw',
+        'width' => '20%',
+        'value' => function ($model, $key, $index, $widget) {
+            return Html::a($model->name,
+                'index.php?r=good%2Fview&id='.$model->good_id
+            );
+        }
+],
+    [
+        'attribute' => 'unit',
+    ],
+    [
+        'attribute' => 'price',
+    ],
+    [
+        'attribute' => 'cost',
+    ],
+    // 'enable',
 
-//            ['class' => 'kartik\grid\ActionColumn'],
-        ],
+    //            ['class' => 'kartik\grid\ActionColumn'],
+],
     ]); ?>
 <?php Pjax::end(); ?>
 </div>

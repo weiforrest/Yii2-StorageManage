@@ -41,7 +41,7 @@ class InputDetail extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-			'id' => Yii::t('app', 'ID'),
+            'id' => Yii::t('app', 'ID'),
             'input_id' => Yii::t('app', 'Input ID'),
             'good_id' => Yii::t('app', 'Good'),
             'count' => Yii::t('app', 'Count'),

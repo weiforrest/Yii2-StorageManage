@@ -17,87 +17,87 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
 
-	<?php Modal::begin([
-		'header' => '<h1>'.Yii::t('app', 'Create Customer').'</h1>',
-		'id' => 'modal',
-		'size' => 'modal-lg',
-	]);
-	echo "<div id = 'modalContent'></div>";
-	Modal::end();
-	?>
+<?php Modal::begin([
+    'header' => '<h1>'.Yii::t('app', 'Create Customer').'</h1>',
+    'id' => 'modal',
+    'size' => 'modal-lg',
+]);
+echo "<div id = 'modalContent'></div>";
+Modal::end();
+?>
 
 <?php Pjax::begin(); ?>
-    <?= GridView::widget([
-        'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
-        'tableOptions' => [
-            'style'=>'text-align:center',
-        ],
-        'bordered' => false,
-        'toolbar' => [
-            ['content' => Html::button(Yii::t('app', 'Create Customer'),
-                ['value' => Url::to('index.php?r=customer/create'),
-                    'id' => 'modalButton',
-                'class' => 'btn btn-success'])
-            ],
-        ],
-        'panel' => [
-            'type' => GridView::TYPE_PRIMARY,
-            'heading' => Yii::t('app', 'Customer'),
-        ],
-        'columns' => [
-            [
-                'class' => 'kartik\grid\SerialColumn',
-                'width' => '5%'
-            ],
+<?= GridView::widget([
+    'dataProvider' => $dataProvider,
+    'filterModel' => $searchModel,
+    'tableOptions' => [
+        'style'=>'text-align:center',
+    ],
+    'bordered' => false,
+    'toolbar' => [
+        ['content' => Html::button(Yii::t('app', 'Create Customer'),
+        ['value' => Url::to('index.php?r=customer/create'),
+        'id' => 'modalButton',
+        'class' => 'btn btn-success'])
+    ],
+],
+'panel' => [
+    'type' => GridView::TYPE_PRIMARY,
+    'heading' => Yii::t('app', 'Customer'),
+],
+'columns' => [
+    [
+        'class' => 'kartik\grid\SerialColumn',
+        'width' => '5%'
+    ],
 
-            //'customer_id',
-			[
-				'attribute' => 'name',
-                'format' => 'raw',
-                'width' => '10%',
-                'value' => function ($model, $key, $index, $widget) {
-                    return Html::a($model->name,
-                        'index.php?r=customer%2Fview&id='.$model->customer_id
-                        );
-                }
-			],
-			[
-                'width' => '20%',
-				'attribute' => 'telphone',
-			],
-			[
-				'attribute' => 'time',
-				'format' => ['datetime','php:Y-m-d'],
-				'filterType' => GridView::FILTER_DATE_RANGE,
-				'filterWidgetOptions' => [
-					'presetDropdown' => true,
-//                    'hideInput' => true,
-					'pluginOptions' => [
-						'locale' => [
-							'separator' => ' to ',
-							'format' => 'YYYY-MM-DD',
-						],
-					],
-				],
-			],
-            [
-                'attribute' => 'sum',
-                'width' => '10%',
-                'format' => ['decimal', 2],
+    //'customer_id',
+    [
+        'attribute' => 'name',
+        'format' => 'raw',
+        'width' => '10%',
+        'value' => function ($model, $key, $index, $widget) {
+            return Html::a($model->name,
+                'index.php?r=customer%2Fview&id='.$model->customer_id
+            );
+        }
+],
+    [
+        'width' => '20%',
+        'attribute' => 'telphone',
+    ],
+    [
+        'attribute' => 'time',
+        'format' => ['datetime','php:Y-m-d'],
+        'filterType' => GridView::FILTER_DATE_RANGE,
+        'filterWidgetOptions' => [
+            'presetDropdown' => true,
+            //                    'hideInput' => true,
+            'pluginOptions' => [
+                'locale' => [
+                    'separator' => ' to ',
+                    'format' => 'YYYY-MM-DD',
+                ],
             ],
-            [
-                'attribute' => 'payed',
-                'width' => '10%',
-                'format' => ['decimal', 2],
-            ],
-            [
-                'attribute' => 'unpay',
-                'width' => '10%',
-                'format' => ['decimal', 2],
-            ],
-//            ['class' => 'kartik\grid\ActionColumn'],
         ],
+    ],
+    [
+        'attribute' => 'sum',
+        'width' => '10%',
+        'format' => ['decimal', 2],
+    ],
+    [
+        'attribute' => 'payed',
+        'width' => '10%',
+        'format' => ['decimal', 2],
+    ],
+    [
+        'attribute' => 'unpay',
+        'width' => '10%',
+        'format' => ['decimal', 2],
+    ],
+    //            ['class' => 'kartik\grid\ActionColumn'],
+],
     ]); ?>
 <?php Pjax::end(); ?>
 
