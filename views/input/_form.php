@@ -62,7 +62,7 @@ $("body").on("change",".detail-count",function() {
     var total_item = $(this).parent().parent().next().next().next().children("em");
     count = $(this).val();
     var good_id = good_item.val();
-    if(!isNaN(count) && !isNaN(price)){
+    if(!isNaN(count)){
         price = getPrice(good_id);
         total_item.html((price * count).toFixed(2));
         updateMoney();
@@ -145,11 +145,11 @@ $this->registerJs($js, $this::POS_END);
                                     <div class="clearfix"></div>
                                     <div class="col-sm-6">
                                         <strong><?= Yii::t('app', 'Price').' : ' ?></strong>
-                                        <?= '<em class="pull-right" id="inputdetail-'.$i.'-price">0.00</em>'?>
+                                        <?= '<em class="pull-right" id="inputdetail-'.$i.'-price">'. number_format($modelDetail->good->price, 2, '.', '') .'</em>'?>
                                     </div>
                                     <div class="col-sm-6 pull-right">
                                         <strong><?= Yii::t("app", 'Total').' : ' ?></strong>
-                                        <?= '<em class="pull-right detail-total" id="inputdetail-'.$i.'-total">0.00</em>'?>
+                                        <?= '<em class="pull-right detail-total" id="inputdetail-'.$i.'-total">'. number_format($modelDetail->good->price * $modelDetail->count, 2, '.','') .'</em>'?>
                                     </div>
                                     <div class="clearfix"></div>
                                 </div><!-- .row -->
