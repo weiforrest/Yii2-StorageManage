@@ -179,7 +179,7 @@ class TradeController extends Controller
                 }
             }
         }
-        return $this->render('create', [
+        return $this->render('update', [
                 'model' => $model,
                 'modelDetails' => (empty($modelDetails)) ? [new TradeDetail] : $modelDetails
             ]);

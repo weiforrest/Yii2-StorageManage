@@ -145,11 +145,27 @@ $this->registerJs($js, $this::POS_END);
                                     <div class="clearfix"></div>
                                     <div class="col-sm-6">
                                         <strong><?= Yii::t('app', 'Price').' : ' ?></strong>
-                                        <?= '<em class="pull-right" id="inputdetail-'.$i.'-price">'. number_format($modelDetail->good->price, 2, '.', '') .'</em>'?>
+                                        <em class="pull-right">
+                                        <?php
+                                        if($modelDetail->good) {
+                                            echo number_format($modelDetail->good->price, 2, '.', '');
+                                        }else {
+                                            echo '0.00';
+                                        }
+                                        ?>
+                                        </em>
                                     </div>
                                     <div class="col-sm-6 pull-right">
                                         <strong><?= Yii::t("app", 'Total').' : ' ?></strong>
-                                        <?= '<em class="pull-right detail-total" id="inputdetail-'.$i.'-total">'. number_format($modelDetail->good->price * $modelDetail->count, 2, '.','') .'</em>'?>
+                                        <em class="pull-right detail-total">
+                                        <?php
+                                        if($modelDetail->good) {
+                                            echo number_format($modelDetail->good->price * $modelDetail->count, 2, '.','');
+                                        }else {
+                                            echo '0.00';
+                                        }
+                                        ?>
+                                        </em>
                                     </div>
                                     <div class="clearfix"></div>
                                 </div><!-- .row -->

@@ -53,7 +53,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'value' => function($model){
                 return $model->count * $model->good->price;
             }
-]
+        ],
 ],
     ]) ?>
 <?php Pjax::end(); ?>

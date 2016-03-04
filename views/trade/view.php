@@ -54,6 +54,14 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
             'count',
             'price',
+            [
+                'label' => Yii::t('app', 'Summary'),
+                'class' => 'yii\grid\DataColumn',
+                'format' => ['decimal', 2],
+                'value' => function($model) {
+                    return $model->count * $model->price;
+                }
+            ],
         ],
     ]) ?>
     <?php Pjax::end(); ?>
