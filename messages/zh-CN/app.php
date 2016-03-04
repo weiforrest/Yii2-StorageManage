@@ -31,6 +31,7 @@ return [
     'Card Number' => '账户卡号',
     'Create Card' => '创建账户',
     'Update' => '更新',
+    'Select Card' => '选择账户',
 
     //Customer
     'Customer' => '顾客',
@@ -59,5 +60,8 @@ return [
     'Select Customer' => '选择顾客',
     'Total' => '总计',
     'Summary' => '总价',
+
+    //Receive
+    'Create Receive' => '创建收款',
 
 ];

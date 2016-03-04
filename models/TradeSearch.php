@@ -20,8 +20,8 @@ class TradeSearch extends Trade
     public function rules()
     {
         return [
-            [['id', 'customer_id'], 'integer'],
-            [['time', 'detailCount'], 'safe'],
+            [['id'], 'integer'],
+            [['time', 'detailCount', 'customer_id'], 'safe'],
             [['money'], 'number'],
         ];
     }
@@ -87,10 +87,10 @@ class TradeSearch extends Trade
         $query->joinwith('customer');
         $query->andFilterWhere([
             'id' => $this->id,
-            'money' => $this->money,
             'detailSum.detail_count' => $this->detailCount,
         ]);
 
+        $query->andFilterWhere(['like', 'money', $this->money]);
         $query->andFilterWhere(['like', 'customer.name', $this->customer_id]);
 
         return $dataProvider;

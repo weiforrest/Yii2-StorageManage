@@ -84,6 +84,7 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'attribute' => 'money',
                 'width' => '15%',
+                'format' => ['decimal', 2],
                 'pageSummary' => true,
             ],
             [

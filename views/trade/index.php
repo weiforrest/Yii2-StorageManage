@@ -83,13 +83,13 @@ $this->params['breadcrumbs'][] = $this->title;
                 'pageSummary' => Yii::t('app','Total'),
             ],
             [
-//                'class' => 'kartik\grid\EditableColumn',
-                'attribute' => 'money',
-                'format' => ['decimal', 2],
+                'attribute' => 'detailCount',
                 'pageSummary' => true,
             ],
             [
-                'attribute' => 'detailCount',
+//                'class' => 'kartik\grid\EditableColumn',
+                'attribute' => 'money',
+                'format' => ['decimal', 2],
                 'pageSummary' => true,
             ],
             ['class' => 'kartik\grid\ActionColumn',

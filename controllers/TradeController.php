@@ -113,6 +113,11 @@ class TradeController extends Controller
                     }
                     if($flag) {
                         $transcation-> commit();
+                        //add the money to customer
+                        $customer = $model->customer;
+                        $customer->unpay +=$model->money;
+                        $customer->sum += $model->money;
+                        $customer->save();
                         return $this->redirect(['view', 'id' => $model->id]);
                     }
                 } catch (Exception $e) {
@@ -135,6 +140,7 @@ class TradeController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+        $oldMoney = $model->money;
         $modelDetails = $model->tradeDetails;
 
         if ($model->load(Yii::$app->request->post())) {
@@ -171,6 +177,13 @@ class TradeController extends Controller
                         }
                     }
                     if($flag) {
+                        //update the money to customer
+                        $customer = $model->customer;
+                        $customer->unpay -=$oldMoney;
+                        $customer->sum -= $oldMoney;
+                        $customer->unpay += $model->money;
+                        $customer->sum += $model->money;
+                        $customer->save();
                         $transcation->commit();
                         return $this->redirect(['view', 'id' => $model->id]);
                     }
@@ -194,8 +207,14 @@ class TradeController extends Controller
     public function actionDelete($id)
     {
         TradeDetail::deleteAll(['trade_Id' => $id]);
-        $this->findModel($id)->delete();
+        $model = $this->findModel($id);
 
+        //delete the money to customer
+        $customer = $model->customer;
+        $customer->unpay -=$model->money;
+        $customer->sum -= $model->money;
+        $customer->save();
+        $model->delete();
         return $this->redirect(['index']);
     }
 

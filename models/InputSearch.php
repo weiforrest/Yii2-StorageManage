@@ -96,8 +96,8 @@ class InputSearch extends Input
         $query->andFilterWhere([
             'id' => $this->id,
             'detailSum.detail_count' => $this->detailCount,
-            'money' => $this->money,
         ]);
+        $query->andFilterWhere(['like', 'money', $this->money]);
 
         return $dataProvider;
     }
