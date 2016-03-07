@@ -43,7 +43,7 @@ $config = [
         'db' => require(__DIR__ . '/db.php'),
     ],
     'params' => $params,
-	'defaultRoute' => 'card', /*set the default controller*/ 
+	//'defaultRoute' => 'card', [>set the default controller<]
 	'modules' => [
 		'user' => [
 			'class' => 'amnah\yii2\user\Module',
