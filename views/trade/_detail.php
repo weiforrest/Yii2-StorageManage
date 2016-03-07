@@ -39,5 +39,12 @@ use kartik\grid\GridView;
             },
 
         ],
+        [
+            'label' => Yii::t('app', 'Profit'),
+            'format' => ['decimal', 2],
+            'value' => function($model, $key, $index, $widget) {
+                return $model->count * ($model->price - $model->good->cost);
+            },
+        ],
     ],
 ]) ?>

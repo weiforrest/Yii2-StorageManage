@@ -2,7 +2,6 @@
 
 use yii\helpers\Html;
 //use yii\grid\GridView;
-use yii\widgets\Pjax;
 use kartik\grid\GridView;
 use app\models\TradeDetailSearch;
 
@@ -18,7 +17,6 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
-    <?php Pjax::begin(); ?>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
@@ -92,13 +90,18 @@ $this->params['breadcrumbs'][] = $this->title;
                 'format' => ['decimal', 2],
                 'pageSummary' => true,
             ],
-            ['class' => 'kartik\grid\ActionColumn',
+            [
+                'attribute' => 'profit',
+                'format' => ['decimal', 2],
+                'pageSummary' => true,
+            ],
+            [
+                'class' => 'kartik\grid\ActionColumn',
                 'updateOptions' => ['hidden'=> true],
                 'deleteOptions' => ['hidden' => true],
             ],
         ],
         'showPageSummary' => true,
     ]); ?>
-    <?php Pjax::end(); ?>
 
 </div>

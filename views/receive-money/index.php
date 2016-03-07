@@ -30,7 +30,7 @@ $this->params['breadcrumbs'][] = $this->title;
         ],
         'panel' => [
             'type' => GridView::TYPE_PRIMARY,
-            'heading' => Yii::t('app', 'Trades'),
+            'heading' => Yii::t('app', 'Receive'),
         ],
         'columns' => [
             [

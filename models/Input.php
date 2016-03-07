@@ -70,7 +70,7 @@ class Input extends \yii\db\ActiveRecord
      */
     public function getGoods()
     {
-        return $this->hasMany(Good::className(), ['good_id' => 'good_id'])->viaTable('input_detail', ['input_id' => 'id']);
+        return $this->hasMany(Good::className(), ['id' => 'good_id'])->viaTable('input_detail', ['input_id' => 'id']);
     }
 
     public static function createMultiple($modelClass, $multipleModels = [])

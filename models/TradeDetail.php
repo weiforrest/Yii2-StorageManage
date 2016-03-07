@@ -65,6 +65,6 @@ class TradeDetail extends \yii\db\ActiveRecord
      */
     public function getGood()
     {
-        return $this->hasOne(Good::className(), ['good_id' => 'good_id']);
+        return $this->hasOne(Good::className(), ['id' => 'good_id']);
     }
 }

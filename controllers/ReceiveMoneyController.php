@@ -8,6 +8,7 @@ use app\models\ReceiveMoneySearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\filters\AccessControl;
 
 /**
  * ReceiveMoneyController implements the CRUD actions for ReceiveMoney model.

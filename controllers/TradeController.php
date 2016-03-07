@@ -83,6 +83,7 @@ class TradeController extends Controller
     {
         $model = new Trade();
         $modelDetails = [new TradeDetail];
+        $profit = 0.00;
 
         if ($model->load(Yii::$app->request->post())) {
             $modelDetails = Trade::createMultiple(TradeDetail::className());
@@ -106,6 +107,8 @@ class TradeController extends Controller
                     if($flag = $model->save(false)) {
                         foreach ($modelDetails as $modelDetail) {
                             $modelDetail->trade_id = $model->id;
+                            //count the profit;
+                            $profit += ($modelDetail->price - $modelDetail->good->cost) * $modelDetail->count;
                             if( ! ($flag = $modelDetail->save(false))) {
                                 $transcation->rollBack();
                             }
@@ -118,6 +121,9 @@ class TradeController extends Controller
                         $customer->unpay +=$model->money;
                         $customer->sum += $model->money;
                         $customer->save();
+                        // save the profit
+                        $model->profit = $profit;
+                        $model->save();
                         return $this->redirect(['view', 'id' => $model->id]);
                     }
                 } catch (Exception $e) {

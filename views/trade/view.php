@@ -2,8 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
-use yii\grid\GridView;
-use yii\widgets\Pjax;
+use kartik\grid\GridView;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Trade */
@@ -35,36 +34,49 @@ $this->params['breadcrumbs'][] = $this->title;
             'customer.name',
             'time',
             'money',
+            'profit',
         ],
     ]) ?>
 
-    <?php Pjax::begin(); ?>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
+        //'filterModel' => $searchModel,
+        'layout' => '{items}{pager}',
         'tableOptions' => [
             'style'=>'text-align:center',
             'class' => 'table table-striped table-bordered',
         ],
+        'showPageSummary' => true,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+            ['class' => 'kartik\grid\SerialColumn'],
             [
                 'attribute' => 'good_id',
                 'value' => 'good.name',
             ],
             'count',
-            'price',
+            [
+                'attribute' => 'price',
+                'pageSummary' => Yii::t('app','Total'),
+            ],
             [
                 'label' => Yii::t('app', 'Summary'),
-                'class' => 'yii\grid\DataColumn',
+                //'class' => 'kartik\grid\DataColumn',
                 'format' => ['decimal', 2],
                 'value' => function($model) {
                     return $model->count * $model->price;
-                }
+                },
+                'pageSummary' => true,
+            ],
+            [
+                'label' => Yii::t('app', 'Profit'),
+                //'class' => 'yii\grid\DataColumn',
+                'format' => ['decimal', 2],
+                'value' => function($model, $key, $index, $widget) {
+                    return $model->count * ($model->price - $model->good->cost);
+                },
+                'pageSummary' => true,
             ],
         ],
     ]) ?>
-    <?php Pjax::end(); ?>
-
 
 </div>

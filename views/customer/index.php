@@ -2,7 +2,6 @@
 
 use yii\helpers\Html;
 use kartik\grid\GridView;
-use yii\widgets\Pjax;
 use yii\bootstrap\Modal;
 use yii\helpers\Url;
 /* @var $this yii\web\View */
@@ -26,7 +25,6 @@ echo "<div id = 'modalContent'></div>";
 Modal::end();
 ?>
 
-<?php Pjax::begin(); ?>
 <?= GridView::widget([
     'dataProvider' => $dataProvider,
     'filterModel' => $searchModel,
@@ -99,6 +97,5 @@ Modal::end();
     //            ['class' => 'kartik\grid\ActionColumn'],
 ],
     ]); ?>
-<?php Pjax::end(); ?>
 
 </div>

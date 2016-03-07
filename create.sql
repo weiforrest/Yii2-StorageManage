@@ -8,13 +8,13 @@ CREATE TABLE customer(
 ) ENGINE = InnoDB;
 
 CREATE TABLE good(
-	good_id INT UNSIGNED  NOT NULL AUTO_INCREMENT,
+	id INT UNSIGNED  NOT NULL AUTO_INCREMENT,
 	name VARCHAR (128) NOT NULL,
 	unit ENUM('H','X') NOT NULL,
 	price DECIMAL(10,2) NOT NULL,
 	cost DECIMAL(10,2) NOT NULL,
-	enable ENUM('D','E') NOT NULL DEFAULT 'E',
-	PRIMARY KEY(good_id)
+  num INT UNSIGNED NOT NULL,
+	PRIMARY KEY(id)
 ) ENGINE  = InnoDB;
 
 CREATE TABLE trade(
@@ -38,7 +38,7 @@ CREATE TABLE trade_detail(
 	INDEX(good_id),
 	INDEX(trade_id),
 	FOREIGN KEY(trade_id) REFERENCES trade (id),
-	FOREIGN KEY(good_id) REFERENCES good (good_id)
+	FOREIGN KEY(good_id) REFERENCES good (id)
 ) ENGINE = InnoDB;
 
 CREATE TABLE card(
@@ -76,5 +76,5 @@ CREATE TABLE input_detail(
 	INDEX(good_id),
 	count INT UNSIGNED NOT NULL,
 	FOREIGN KEY(input_id) REFERENCES input (id),
-	FOREIGN KEY(good_id) REFERENCES good (good_id)
+	FOREIGN KEY(good_id) REFERENCES good (id)
 ) ENGINE = InnoDB;

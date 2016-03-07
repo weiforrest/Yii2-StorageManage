@@ -15,17 +15,17 @@ use yii\widgets\ActiveForm;
         'method' => 'get',
     ]); ?>
 
-    <?= $form->field($model, 'good_id') ?>
+    <?= $form->field($model, 'id') ?>
 
     <?= $form->field($model, 'name') ?>
 
     <?= $form->field($model, 'unit') ?>
+    <?= $form->field($model, 'num') ?>
 
     <?= $form->field($model, 'price') ?>
 
     <?= $form->field($model, 'cost') ?>
 
-    <?php // echo $form->field($model, 'enable') ?>
 
     <div class="form-group">
         <?= Html::submitButton(Yii::t('app', 'Search'), ['class' => 'btn btn-primary']) ?>

@@ -3,7 +3,6 @@
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 use yii\grid\GridView;
-use yii\widgets\Pjax;
 /* @var $this yii\web\View */
 /* @var $model app\models\Input */
 /* @var $detail app\models\InputDetail */
@@ -31,14 +30,13 @@ $this->params['breadcrumbs'][] = $this->title;
     <h2> <?= Yii::t('app','Time') . ': ' . $model->time; ?> </h2>
     <h2> <?= Yii::t('app','Money'). ': ' . $model->money; ?> </h2>
 
-<?php Pjax::begin(); ?>
 <?= GridView::widget([
     'dataProvider' => $dataProvider,
     'tableOptions' => [
         'style'=>'text-align:center',
         'class' => 'table table-striped table-bordered',
     ],
-    'filterModel' => $searchModel,
+    //'filterModel' => $searchModel,
     'columns' => [
         ['class' => 'yii\grid\SerialColumn'],
         [
@@ -56,8 +54,6 @@ $this->params['breadcrumbs'][] = $this->title;
         ],
 ],
     ]) ?>
-<?php Pjax::end(); ?>
-
 
 
 </div>

@@ -75,7 +75,7 @@ class GoodController extends Controller
         $model = new Good();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->good_id]);
+            return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->renderAjax('create', [
                 'model' => $model,
@@ -94,7 +94,7 @@ class GoodController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->good_id]);
+            return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('update', [
                 'model' => $model,
@@ -133,8 +133,7 @@ class GoodController extends Controller
 
     public function actionPrices()
     {
-        $good = Good::find()->select(["good_id", "price"])->asArray()->all();
-
+        $good = Good::find()->select(["id", "price", "unit", "num"])->asArray()->all();
         Yii::$app->response->format = Response::FORMAT_JSON;
         //return print_r($good);
         return json_encode($good);

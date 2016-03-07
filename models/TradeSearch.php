@@ -22,7 +22,7 @@ class TradeSearch extends Trade
         return [
             [['id'], 'integer'],
             [['time', 'detailCount', 'customer_id'], 'safe'],
-            [['money'], 'number'],
+            [['money', 'profit'], 'number'],
         ];
     }
 
@@ -91,6 +91,7 @@ class TradeSearch extends Trade
         ]);
 
         $query->andFilterWhere(['like', 'money', $this->money]);
+        $query->andFilterWhere(['like', 'profit', $this->profit]);
         $query->andFilterWhere(['like', 'customer.name', $this->customer_id]);
 
         return $dataProvider;

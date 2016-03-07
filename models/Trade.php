@@ -37,7 +37,7 @@ class Trade extends \yii\db\ActiveRecord
             [['customer_id', 'money'], 'required'],
             [['customer_id'], 'integer'],
             [['time'], 'safe'],
-            [['money'], 'number']
+            [['money', 'profit'], 'number']
         ];
     }
 
@@ -51,6 +51,7 @@ class Trade extends \yii\db\ActiveRecord
             'customer_id' => Yii::t('app', 'Customer'),
             'time' => Yii::t('app', 'Time'),
             'money' => Yii::t('app', 'Money'),
+            'profit' => Yii::t('app', 'Profit'),
             'detailCount' => Yii::t('app', 'Count'),
         ];
     }

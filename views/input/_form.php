@@ -30,8 +30,12 @@ $(document).ready(function(){
 function getPrice(id) {
     var toReturn;
     $.each(prices, function(i,v){
-        if(v.good_id == id){
-            toReturn = v.price;
+        if(v.id == id){
+            if(v.unit == "X") {
+                toReturn = v.price;
+            } else {
+                toReturn = (v.price * v.num).toFixed(2);
+            }
             return false;
         }
     });
@@ -129,7 +133,7 @@ $this->registerJs($js, $this::POS_END);
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <?= $form->field($modelDetail, "[{$i}]good_id")->dropDownList(
-                                            ArrayHelper::map(Good::find()->all(), 'good_id', 'name'),
+                                            ArrayHelper::map(Good::find()->all(), 'id', 'name'),
                                             [
                                                 'prompt' => Yii::t('app','Select Good'),
                                                 'class' => 'form-control detail-good-id',

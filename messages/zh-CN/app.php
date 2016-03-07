@@ -20,8 +20,11 @@ return [
     'Cost' => '成本',
     'Create Good' => '创建商品',
     'Create' => '创建',
-    'Enable' => '可用',
     'Delete' => '删除',
+    'Box' => '箱',
+    'Piece' => '件',
+    'Num' =>'规格',
+
 
     'Update {modelClass}: ' => '更新 {modelClass}: ',
     // Cards
@@ -34,8 +37,8 @@ return [
     'Select Card' => '选择账户',
 
     //Customer
-    'Customer' => '顾客',
-    'Customers' => '顾客',
+    'Customer' => '客户',
+    'Customers' => '客户',
     'Create Customer' => '创建顾客',
     'Customer ID' => '顾客 ID',
     'Telphone' => '电话',
@@ -60,6 +63,7 @@ return [
     'Select Customer' => '选择顾客',
     'Total' => '总计',
     'Summary' => '总价',
+    'Profit' => '利润',
 
     //Receive
     'Create Receive' => '创建收款',

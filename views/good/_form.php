@@ -14,13 +14,13 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'unit')->dropDownList([ 'H' => 'H', 'X' => 'X', ], ['prompt' => '']) ?>
+    <?= $form->field($model, 'unit')->dropDownList([ 'H' => Yii::t('app', 'Piece'), 'X' => Yii::t('app', 'Box'), ], ['prompt' => Yii::t('app', 'Select Unit')]) ?>
+    <?= $form->field($model, 'num')->textInput() ?>
 
     <?= $form->field($model, 'price')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'cost')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'enable')->dropDownList([ 'D' => 'D', 'E' => 'E', ], ['prompt' => '']) ?>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? Yii::t('app', 'Create') : Yii::t('app', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

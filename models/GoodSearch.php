@@ -18,8 +18,8 @@ class GoodSearch extends Good
     public function rules()
     {
         return [
-            [['good_id'], 'integer'],
-            [['name', 'unit', 'enable'], 'safe'],
+            [['id', 'num'], 'integer'],
+            [['name', 'unit'], 'safe'],
             [['price', 'cost'], 'number'],
         ];
     }
@@ -57,14 +57,14 @@ class GoodSearch extends Good
         }
 
         $query->andFilterWhere([
-            'good_id' => $this->good_id,
+            'id' => $this->id,
             'price' => $this->price,
             'cost' => $this->cost,
+            'num' => $this->num,
         ]);
 
         $query->andFilterWhere(['like', 'name', $this->name])
-            ->andFilterWhere(['like', 'unit', $this->unit])
-            ->andFilterWhere(['like', 'enable', $this->enable]);
+            ->andFilterWhere(['like', 'unit', $this->unit]);
 
         return $dataProvider;
     }

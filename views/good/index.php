@@ -2,7 +2,6 @@
 
 use yii\helpers\Html;
 use kartik\grid\GridView;
-use yii\widgets\Pjax;
 use yii\bootstrap\Modal;
 use yii\helpers\Url;
 
@@ -29,7 +28,6 @@ Modal::end();
 
 
 
-<?php Pjax::begin(); ?>
 <?= GridView::widget([
     'dataProvider' => $dataProvider,
     'filterModel' => $searchModel,
@@ -51,19 +49,24 @@ Modal::end();
 'columns' => [
     ['class' => 'kartik\grid\SerialColumn'],
 
-    //'good_id',
     [
         'attribute' => 'name',
         'format' => 'raw',
         'width' => '20%',
         'value' => function ($model, $key, $index, $widget) {
             return Html::a($model->name,
-                'index.php?r=good%2Fview&id='.$model->good_id
+                'index.php?r=good%2Fview&id='.$model->id
             );
         }
 ],
     [
         'attribute' => 'unit',
+        'value' => function ($model, $key, $index, $widget) {
+            return $model->unit == 'X' ? Yii::t('app', 'Box') :Yii::t('app', 'Piece');
+        }
+    ],
+    [
+        'attribute' => 'num',
     ],
     [
         'attribute' => 'price',
@@ -71,10 +74,8 @@ Modal::end();
     [
         'attribute' => 'cost',
     ],
-    // 'enable',
 
     //            ['class' => 'kartik\grid\ActionColumn'],
 ],
     ]); ?>
-<?php Pjax::end(); ?>
 </div>
