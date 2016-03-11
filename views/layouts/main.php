@@ -37,18 +37,17 @@ echo Nav::widget([
     'options' => ['class' => 'navbar-nav navbar-right'],
     'items' => [
         ['label' => Yii::t('app', 'Customer'), 'url' => ['/customer/index']],
-        ['label' => Yii::t('app','Trade'), 'url' => ['/trade/index']],
-        ['label' => Yii::t('app','Receive'), 'url' => ['/receive-money/index']],
-        ['label' => Yii::t('app', 'Inputs'), 'url' => ['/input/index']],
-        ['label' => Yii::t('app', 'Goods'), 'url' => ['/good/index']],
-        ['label' => Yii::t('app', 'Cards'), 'url' => ['/card/index']],
-        //            ['label' => 'About', 'url' => ['/site/about']],
-        ['label' => Yii::t('app', 'Admin'), 'url' => ['/user/admin']],
+        ['label' => Yii::t('app','Delivery'), 'url' => ['/delivery/index']],
+        ['label' => Yii::t('app','Collection'), 'url' => ['/collection/index']],
+        ['label' => Yii::t('app', 'Stockin'), 'url' => ['/stockin/index']],
+        ['label' => Yii::t('app', 'Product'), 'url' => ['/product/index']],
+        ['label' => Yii::t('app', 'Account'), 'url' => ['/account/index']],
+        ['label' => Yii::t('app','About'), 'url' => ['/site/about']],
         Yii::$app->user->isGuest ?
-        ['label' => Yii::t('app', 'Login'), 'url' => ['/user/login']] :
+        ['label' => Yii::t('app', 'Login'), 'url' => ['/site/login']] :
         [
-            'label' => Yii::t('app', 'Logout') . ' (' . Yii::$app->user->displayname . ')',
-            'url' => ['/user/logout'],
+            'label' => Yii::t('app', 'Logout') . ' (' . Yii::$app->user->identity->username . ')',
+            'url' => ['/site/logout'],
             'linkOptions' => ['data-method' => 'post']
         ],
     ],

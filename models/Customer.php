@@ -7,13 +7,16 @@ use Yii;
 /**
  * This is the model class for table "customer".
  *
- * @property integer $customer_id
+ * @property integer $id
  * @property string $name
- * @property string $telphone
+ * @property string $info
  * @property string $time
+ * @property string $unpay
+ * @property string $payed
+ * @property string $sum
  *
- * @property ReceiveMoney[] $receiveMoneys
- * @property Trade[] $trades
+ * @property Collection[] $collections
+ * @property Delivery[] $deliveries
  */
 class Customer extends \yii\db\ActiveRecord
 {
@@ -31,11 +34,10 @@ class Customer extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name'], 'required'],
-            [['time'], 'safe'],
-            [['name'], 'string', 'max' => 128],
-            [['telphone'], 'string', 'max' => 64],
-            [['unpay', 'payed','sum'], 'number']
+            [['name', 'info'], 'required'],
+            [['time', 'unpay', 'payed', 'sum'], 'safe'],
+            [['unpay', 'payed', 'sum'], 'number'],
+            [['name', 'info'], 'string', 'max' => 128]
         ];
     }
 
@@ -45,29 +47,29 @@ class Customer extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'customer_id' => Yii::t('app', 'Customer ID'),
+            'id' => Yii::t('app', 'ID'),
             'name' => Yii::t('app', 'Name'),
-            'telphone' => Yii::t('app', 'Telphone'),
+            'info' => Yii::t('app', 'Info'),
             'time' => Yii::t('app', 'Time'),
             'unpay' => Yii::t('app', 'Unpay'),
             'payed' => Yii::t('app', 'Payed'),
-            'sum' => Yii::t('app', 'Sum')
+            'sum' => Yii::t('app', 'Sum'),
         ];
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getReceiveMoneys()
+    public function getCollections()
     {
-        return $this->hasMany(ReceiveMoney::className(), ['customer_id' => 'customer_id']);
+        return $this->hasMany(Collection::className(), ['customer_id' => 'id']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getTrades()
+    public function getDeliveries()
     {
-        return $this->hasMany(Trade::className(), ['customer_id' => 'customer_id']);
+        return $this->hasMany(Delivery::className(), ['customer_id' => 'id']);
     }
 }

@@ -4,53 +4,9 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "642799e4b10dda3b63c976ffe745d272",
-    "content-hash": "1185e6a07d688b183d6635d859448c3f",
+    "hash": "cff82299c43c09cec0f8610df3421a7e",
+    "content-hash": "51b8d1c0e2f301f57d72dbabeae8cc23",
     "packages": [
-        {
-            "name": "amnah/yii2-user",
-            "version": "4.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/amnah/yii2-user.git",
-                "reference": "e0c20f543a33f75d690bd36352ffed18e809af96"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/amnah/yii2-user/zipball/e0c20f543a33f75d690bd36352ffed18e809af96",
-                "reference": "e0c20f543a33f75d690bd36352ffed18e809af96",
-                "shasum": ""
-            },
-            "require": {
-                "yiisoft/yii2": "*",
-                "yiisoft/yii2-authclient": "*"
-            },
-            "type": "yii2-extension",
-            "autoload": {
-                "psr-4": {
-                    "amnah\\yii2\\user\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "amnah",
-                    "email": "amnah.dev@gmail.com"
-                }
-            ],
-            "description": "Yii 2 user authentication module",
-            "keywords": [
-                "Authentication",
-                "auth",
-                "user",
-                "yii",
-                "yii2"
-            ],
-            "time": "2015-11-10 03:06:24"
-        },
         {
             "name": "bower-asset/bootstrap",
             "version": "v3.3.5",
@@ -207,16 +163,16 @@
         },
         {
             "name": "bower-asset/yii2-pjax",
-            "version": "v2.0.5",
+            "version": "v2.0.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/jquery-pjax.git",
-                "reference": "6818718408086db6bdcf33649cecb86b6b4f9b67"
+                "reference": "60728da6ade5879e807a49ce59ef9a72039b8978"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/jquery-pjax/zipball/6818718408086db6bdcf33649cecb86b6b4f9b67",
-                "reference": "6818718408086db6bdcf33649cecb86b6b4f9b67",
+                "url": "https://api.github.com/repos/yiisoft/jquery-pjax/zipball/60728da6ade5879e807a49ce59ef9a72039b8978",
+                "reference": "60728da6ade5879e807a49ce59ef9a72039b8978",
                 "shasum": ""
             },
             "require": {
@@ -229,6 +185,7 @@
                     ".travis.yml",
                     "Gemfile",
                     "Gemfile.lock",
+                    "CONTRIBUTING.md",
                     "vendor/",
                     "script/",
                     "test/"
@@ -343,50 +300,6 @@
             "time": "2013-11-30 08:25:19"
         },
         {
-            "name": "kartik-v/bootstrap-popover-x",
-            "version": "v1.4.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/kartik-v/bootstrap-popover-x.git",
-                "reference": "ce1d165af25f6e6caaf97083e20b5a3ad7c7b7c6"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "http://packagist.phpcomposer.com/files/kartik-v/bootstrap-popover-x/ce1d165af25f6e6caaf97083e20b5a3ad7c7b7c6.zip",
-                "reference": "ce1d165af25f6e6caaf97083e20b5a3ad7c7b7c6",
-                "shasum": ""
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "kartik\\plugins\\popover\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD 3-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Kartik Visweswaran",
-                    "email": "kartikv2@gmail.com",
-                    "homepage": "http://www.krajee.com/"
-                }
-            ],
-            "description": "Bootstrap Popover Extended - Popover with modal behavior, styling enhancements and more.",
-            "homepage": "https://github.com/kartik-v/bootstrap-popover-x",
-            "keywords": [
-                "bootstrap",
-                "extended",
-                "jquery",
-                "modal",
-                "modal-popover",
-                "popover",
-                "popover-x"
-            ],
-            "time": "2015-03-18 13:08:39"
-        },
-        {
             "name": "kartik-v/mpdf",
             "version": "v1.0.2",
             "source": {
@@ -479,65 +392,17 @@
             "time": "2016-02-19 18:24:26"
         },
         {
-            "name": "kartik-v/yii2-editable",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/kartik-v/yii2-editable.git",
-                "reference": "d80e2b4617a9832ab383cbb741d51157873ac113"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "http://packagist.phpcomposer.com/files/kartik-v/yii2-editable/d80e2b4617a9832ab383cbb741d51157873ac113.zip",
-                "reference": "d80e2b4617a9832ab383cbb741d51157873ac113",
-                "shasum": ""
-            },
-            "require": {
-                "kartik-v/yii2-krajee-base": "~1.7",
-                "kartik-v/yii2-popover-x": "~1.3"
-            },
-            "type": "yii2-extension",
-            "autoload": {
-                "psr-4": {
-                    "kartik\\editable\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Kartik Visweswaran",
-                    "email": "kartikv2@gmail.com",
-                    "homepage": "http://www.krajee.com/"
-                }
-            ],
-            "description": "An enhanced editable widget for Yii 2.0 that allows easy editing of displayed data with numerous configuration possibilities.",
-            "homepage": "https://github.com/kartik-v/yii2-editable",
-            "keywords": [
-                "bootstrap",
-                "editable",
-                "input",
-                "jquery",
-                "popover",
-                "popover-x",
-                "widget"
-            ],
-            "time": "2016-02-02 01:32:10"
-        },
-        {
             "name": "kartik-v/yii2-grid",
             "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kartik-v/yii2-grid.git",
-                "reference": "574c0e310bda692253c1ba0eac9a94c699b299d5"
+                "reference": "aee1795980be62974a5c35a61fd596c61c0fae6b"
             },
             "dist": {
                 "type": "zip",
-                "url": "http://packagist.phpcomposer.com/files/kartik-v/yii2-grid/574c0e310bda692253c1ba0eac9a94c699b299d5.zip",
-                "reference": "574c0e310bda692253c1ba0eac9a94c699b299d5",
+                "url": "https://packagist.phpcomposer.com/files/kartik-v/yii2-grid/aee1795980be62974a5c35a61fd596c61c0fae6b.zip",
+                "reference": "aee1795980be62974a5c35a61fd596c61c0fae6b",
                 "shasum": ""
             },
             "require": {
@@ -573,7 +438,7 @@
                 "widget",
                 "yii2"
             ],
-            "time": "2016-02-19 18:29:46"
+            "time": "2016-03-08 04:08:06"
         },
         {
             "name": "kartik-v/yii2-krajee-base",
@@ -669,54 +534,6 @@
             "time": "2015-12-03 14:15:23"
         },
         {
-            "name": "kartik-v/yii2-popover-x",
-            "version": "v1.3.3",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/kartik-v/yii2-popover-x.git",
-                "reference": "38f2208cf92f8c4a7758f485575a881cade1970c"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "http://packagist.phpcomposer.com/files/kartik-v/yii2-popover-x/38f2208cf92f8c4a7758f485575a881cade1970c.zip",
-                "reference": "38f2208cf92f8c4a7758f485575a881cade1970c",
-                "shasum": ""
-            },
-            "require": {
-                "kartik-v/bootstrap-popover-x": "~1.4",
-                "kartik-v/yii2-krajee-base": "~1.7"
-            },
-            "type": "yii2-extension",
-            "autoload": {
-                "psr-4": {
-                    "kartik\\popover\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Kartik Visweswaran",
-                    "email": "kartikv2@gmail.com",
-                    "homepage": "http://www.krajee.com/"
-                }
-            ],
-            "description": "An extended bootstrap 3.0 popover widget which combines both the bootstrap popover and modal features and includes various new styling enhancements.",
-            "homepage": "https://github.com/kartik-v/yii2-popover-x",
-            "keywords": [
-                "bootstrap",
-                "extended",
-                "jquery",
-                "modal",
-                "modal-popover",
-                "popover",
-                "popover-x"
-            ],
-            "time": "2016-01-12 16:59:09"
-        },
-        {
             "name": "swiftmailer/swiftmailer",
             "version": "v5.4.1",
             "source": {
@@ -768,220 +585,6 @@
                 "mailer"
             ],
             "time": "2015-06-06 14:19:39"
-        },
-        {
-            "name": "symfony/css-selector",
-            "version": "v3.0.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/css-selector.git",
-                "reference": "6605602690578496091ac20ec7a5cbd160d4dff4"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "http://packagist.phpcomposer.com/files/symfony/css-selector/6605602690578496091ac20ec7a5cbd160d4dff4.zip",
-                "reference": "6605602690578496091ac20ec7a5cbd160d4dff4",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.5.9"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "3.0-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Symfony\\Component\\CssSelector\\": ""
-                },
-                "exclude-from-classmap": [
-                    "/Tests/"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Jean-François Simon",
-                    "email": "jeanfrancois.simon@sensiolabs.com"
-                },
-                {
-                    "name": "Fabien Potencier",
-                    "email": "fabien@symfony.com"
-                },
-                {
-                    "name": "Symfony Community",
-                    "homepage": "https://symfony.com/contributors"
-                }
-            ],
-            "description": "Symfony CssSelector Component",
-            "homepage": "https://symfony.com",
-            "time": "2016-01-27 05:14:46"
-        },
-        {
-            "name": "symfony/dom-crawler",
-            "version": "v3.0.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/dom-crawler.git",
-                "reference": "b693a9650aa004576b593ff2e91ae749dc90123d"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "http://packagist.phpcomposer.com/files/symfony/dom-crawler/b693a9650aa004576b593ff2e91ae749dc90123d.zip",
-                "reference": "b693a9650aa004576b593ff2e91ae749dc90123d",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.5.9",
-                "symfony/polyfill-mbstring": "~1.0"
-            },
-            "require-dev": {
-                "symfony/css-selector": "~2.8|~3.0"
-            },
-            "suggest": {
-                "symfony/css-selector": ""
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "3.0-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Symfony\\Component\\DomCrawler\\": ""
-                },
-                "exclude-from-classmap": [
-                    "/Tests/"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Fabien Potencier",
-                    "email": "fabien@symfony.com"
-                },
-                {
-                    "name": "Symfony Community",
-                    "homepage": "https://symfony.com/contributors"
-                }
-            ],
-            "description": "Symfony DomCrawler Component",
-            "homepage": "https://symfony.com",
-            "time": "2016-01-25 09:56:57"
-        },
-        {
-            "name": "symfony/polyfill-mbstring",
-            "version": "v1.1.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/polyfill-mbstring.git",
-                "reference": "1289d16209491b584839022f29257ad859b8532d"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "http://packagist.phpcomposer.com/files/symfony/polyfill-mbstring/1289d16209491b584839022f29257ad859b8532d.zip",
-                "reference": "1289d16209491b584839022f29257ad859b8532d",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.3"
-            },
-            "suggest": {
-                "ext-mbstring": "For best performance"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.1-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Symfony\\Polyfill\\Mbstring\\": ""
-                },
-                "files": [
-                    "bootstrap.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Nicolas Grekas",
-                    "email": "p@tchwork.com"
-                },
-                {
-                    "name": "Symfony Community",
-                    "homepage": "https://symfony.com/contributors"
-                }
-            ],
-            "description": "Symfony polyfill for the Mbstring extension",
-            "homepage": "https://symfony.com",
-            "keywords": [
-                "compatibility",
-                "mbstring",
-                "polyfill",
-                "portable",
-                "shim"
-            ],
-            "time": "2016-01-20 09:13:37"
-        },
-        {
-            "name": "wbraganca/yii2-dynamicform",
-            "version": "v2.0.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/wbraganca/yii2-dynamicform.git",
-                "reference": "9b761d708aa6c06c1219e1c2ed321f7cb205b09f"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "http://packagist.phpcomposer.com/files/wbraganca/yii2-dynamicform/9b761d708aa6c06c1219e1c2ed321f7cb205b09f.zip",
-                "reference": "9b761d708aa6c06c1219e1c2ed321f7cb205b09f",
-                "shasum": ""
-            },
-            "require": {
-                "symfony/css-selector": "*",
-                "symfony/dom-crawler": "*",
-                "yiisoft/yii2": "*"
-            },
-            "type": "yii2-extension",
-            "autoload": {
-                "psr-4": {
-                    "wbraganca\\dynamicform\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Wanderson Bragança",
-                    "email": "wanderson.wbc@gmail.com"
-                }
-            ],
-            "description": "It is widget to yii2 framework to clone form elements in a nested manner, maintaining accessibility.",
-            "keywords": [
-                "copy DOM element",
-                "extension",
-                "widget",
-                "yii2",
-                "yii2 dynamic form",
-                "yii2-dynamicform"
-            ],
-            "time": "2015-02-25 15:31:24"
         },
         {
             "name": "yiisoft/yii2",
@@ -1076,54 +679,6 @@
                 "yii2"
             ],
             "time": "2016-02-14 14:45:55"
-        },
-        {
-            "name": "yiisoft/yii2-authclient",
-            "version": "2.0.5",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/yiisoft/yii2-authclient.git",
-                "reference": "22910bfe0000538f5b3ca1102cd3de0b5d14a0e2"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-authclient/zipball/22910bfe0000538f5b3ca1102cd3de0b5d14a0e2",
-                "reference": "22910bfe0000538f5b3ca1102cd3de0b5d14a0e2",
-                "shasum": ""
-            },
-            "require": {
-                "ext-curl": "*",
-                "yiisoft/yii2": ">=2.0.4"
-            },
-            "type": "yii2-extension",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "2.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "yii\\authclient\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Paul Klimov",
-                    "email": "klimov.paul@gmail.com"
-                }
-            ],
-            "description": "External authentication via OAuth and OpenID for the Yii framework",
-            "keywords": [
-                "OpenId",
-                "auth",
-                "oauth",
-                "yii2"
-            ],
-            "time": "2015-09-23 17:26:02"
         },
         {
             "name": "yiisoft/yii2-bootstrap",
@@ -1585,8 +1140,7 @@
     "stability-flags": {
         "kartik-v/yii2-mpdf": 20,
         "kartik-v/yii2-date-range": 20,
-        "kartik-v/yii2-grid": 20,
-        "kartik-v/yii2-editable": 20
+        "kartik-v/yii2-grid": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

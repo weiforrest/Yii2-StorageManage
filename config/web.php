@@ -9,13 +9,24 @@ $config = [
     'components' => [
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
-            'cookieValidationKey' => 'weiforrest',
+            'cookieValidationKey' => 'RFjINwBUNprV5cScZ47-WY8SB8wJGD6P',
         ],
+        // for Sae
+        //'assetManager' => [
+            //'class' => 'app\assets\SaeAssetManager',
+            //'assetDomain' => 'assets',
+            //'converter' => [
+                //'class' => 'yii\web\AssetConverter',
+            //],
+        //],
         'cache' => [
+            // set the cache use db
+            //'class' => 'yii\caching\DbCache',
             'class' => 'yii\caching\FileCache',
         ],
         'user' => [
-			'class' => 'amnah\yii2\user\components\User',
+            'identityClass' => 'app\models\User',
+            'enableAutoLogin' => true,
         ],
         'errorHandler' => [
             'errorAction' => 'site/error',
@@ -26,33 +37,35 @@ $config = [
             // 'useFileTransport' to false and configure a transport
             // for the mailer to send real emails.
             'useFileTransport' => true,
-			'messageConfig' => [
-				'from' => ['weiforrest@gmail.com' => 'Admin'],
-				'charset' => 'UTF-8',
-			]
         ],
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
             'targets' => [
                 [
+                    // set the log use db
+                     //'class' => 'yii\log\DbTarget',
                     'class' => 'yii\log\FileTarget',
                     'levels' => ['error', 'warning'],
                 ],
             ],
         ],
         'db' => require(__DIR__ . '/db.php'),
+        /*
+        'urlManager' => [
+            'enablePrettyUrl' => true,
+            'showScriptName' => false,
+            'rules' => [
+            ],
+        ],
+        */
     ],
     'params' => $params,
-	//'defaultRoute' => 'card', [>set the default controller<]
-	'modules' => [
-		'user' => [
-			'class' => 'amnah\yii2\user\Module',
-		],
+    'modules' => [
         'gridview' => [
             'class' => '\kartik\grid\Module',
         ],
-	],
-	'language' => 'zh-CN',
+    ],
+    'language' => 'zh-CN',
 ];
 
 if (YII_ENV_DEV) {

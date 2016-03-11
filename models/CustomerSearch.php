@@ -18,8 +18,9 @@ class CustomerSearch extends Customer
     public function rules()
     {
         return [
-            [['customer_id'], 'integer'],
-            [['name', 'telphone', 'time'], 'safe'],
+            [['id'], 'integer'],
+            [['name', 'info', 'time'], 'safe'],
+            [['unpay', 'payed', 'sum'], 'number'],
         ];
     }
 
@@ -64,11 +65,14 @@ class CustomerSearch extends Customer
         }
 
         $query->andFilterWhere([
-            'customer_id' => $this->customer_id,
+            'id' => $this->id,
+            'unpay' => $this->unpay,
+            'payed' => $this->payed,
+            'sum' => $this->sum,
         ]);
 
         $query->andFilterWhere(['like', 'name', $this->name])
-            ->andFilterWhere(['like', 'telphone', $this->telphone]);
+            ->andFilterWhere(['like', 'info', $this->info]);
 
         return $dataProvider;
     }
