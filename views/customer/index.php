@@ -50,7 +50,7 @@ $this->params['breadcrumbs'][] = $this->title;
             }
         ],
         [
-            'width' => '20%',
+            'width' => '40%',
             'attribute' => 'info',
         ],
         [
