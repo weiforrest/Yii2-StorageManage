@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use kartik\date\DatePicker;
 use app\models\Account;
 use app\models\Customer;
 use yii\helpers\ArrayHelper;
@@ -22,7 +23,19 @@ use yii\helpers\ArrayHelper;
         ]
     ) ?>
 
-    <?= $form->field($model, 'time')->textInput() ?>
+    <div class="form-group field-collection-time">
+        <label class="control-label" for="collection-time"><?= Yii::t('app', 'Time') ?> </label>
+        <?= DatePicker::widget([
+            'id' => 'collection-time',
+            'name' => 'Collection[time]',
+            'value' => $model->time ? $model->time : date('Y-m-d', strtotime('today')),
+            'options' => ['placeholder' => Yii::t('app','Select Time')],
+            'pluginOptions' => [
+                'format' => 'yyyy-m-dd',
+                'todayHighLight' => true,
+            ]
+        ]);?>
+    </div>
 
     <?= $form->field($model, 'money')->textInput(['maxlength' => true]) ?>
 

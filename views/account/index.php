@@ -23,7 +23,7 @@ $this->params['breadcrumbs'][] = $this->title;
     'bordered' => false,
     'toolbar' => [
         [
-            'content' => Html::a(Yii::t('app', 'Create Product'),
+            'content' => Html::a(Yii::t('app', 'Create Account'),
             ['create'],
             ['class' => 'btn btn-success'])
         ],

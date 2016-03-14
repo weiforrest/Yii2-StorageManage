@@ -73,7 +73,13 @@ class CollectionController extends Controller
     {
         $model = new Collection();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post())) {
+            // set the time
+            if ($model->time) {
+                date_default_timezone_set("Asia/ShangHai");
+                $model->time .= ("  ". date("H:i:s"));
+            }
+            $model->save();
             // add the money to customer
             $customer = $model->customer;
             $customer->payed += $model->money;
@@ -98,7 +104,13 @@ class CollectionController extends Controller
         $model = $this->findModel($id);
         $oldMoney = $model->money;
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post())) {
+            // set the time
+            if ($model->time) {
+                date_default_timezone_set("Asia/ShangHai");
+                $model->time .= ("  ". date("H:i:s"));
+            }
+            $model->save();
             // update the money to customer
             $customer = $model->customer;
             $customer->unpay += $oldMoney;

@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use kartik\date\DatePicker;
 use yii\helpers\ArrayHelper;
 use wbraganca\dynamicform\DynamicFormWidget;
 use app\models\Product;
@@ -89,7 +90,19 @@ $this->registerJs($js, $this::POS_END);
         <div class="panel-heading">
             <div class="row">
                 <div class="col-sm-6">
-                    <?= $form->field($model, 'time')->textInput() ?>
+                <div class="form-group field-stockin-time">
+                    <label class="control-label" for="stockin-time"><?= Yii::t('app', 'Time') ?> </label>
+                    <?= DatePicker::widget([
+                        'id' => 'stockin-time',
+                        'name' => 'Stockin[time]',
+                        'value' => $model->time ? $model->time : date('Y-m-d', strtotime('today')),
+                        'options' => ['placeholder' => Yii::t('app','Select Time')],
+                        'pluginOptions' => [
+                            'format' => 'yyyy-m-dd',
+                            'todayHighLight' => true,
+                        ]
+                    ]);?>
+                </div>
                 </div>
                 <div class="col-sm-6">
                     <?= $form->field($model, 'money')->textInput() ?>

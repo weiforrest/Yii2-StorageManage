@@ -98,6 +98,12 @@ class StockinController extends Controller
                 );
             }
 
+            // set the time
+            if ($model->time) {
+                date_default_timezone_set("Asia/ShangHai");
+                $model->time .= ("  ". date("H:i:s"));
+            }
+
             //validate all models
             $valid = $model->validate();
             $valid = Stockin::validateMultiple($modelDetails) && $valid;
@@ -154,9 +160,15 @@ class StockinController extends Controller
                 );
             }
 
+            // set the time
+            if ($model->time) {
+                date_default_timezone_set("Asia/ShangHai");
+                $model->time .= ("  ". date("H:i:s"));
+            }
+
             //validate all models
             $valid = $model->validate();
-            //$valid = Stockin::validateMultiple($modelDetails) && $valid;
+            $valid = Stockin::validateMultiple($modelDetails) && $valid;
 
             if($valid) {
                 $transcation = Yii::$app->db->beginTransaction();

@@ -97,6 +97,11 @@ class DeliveryController extends Controller
                 );
             }
 
+            // set the time
+            if ($model->time) {
+                date_default_timezone_set("Asia/ShangHai");
+                $model->time .= ("  ". date("H:i:s"));
+            }
             //validate all models
             $valid = $model->validate();
             $profit=0;
@@ -168,6 +173,11 @@ class DeliveryController extends Controller
                 );
             }
 
+            // set the time
+            if ($model->time) {
+                date_default_timezone_set("Asia/ShangHai");
+                $model->time .= ("  ". date("H:i:s"));
+            }
             //validate all models
             $valid = $model->validate();
             $valid = Delivery::validateMultiple($modelDetails) && $valid;

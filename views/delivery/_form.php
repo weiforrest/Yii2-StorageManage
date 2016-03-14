@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use kartik\date\DatePicker;
 use yii\helpers\ArrayHelper;
 use wbraganca\dynamicform\DynamicFormWidget;
 use app\models\Product;
@@ -95,7 +96,19 @@ $this->registerJs($js, $this::POS_END);
 
     <div class="panel panel-default">
         <div class="panel-heading">
-            <?= $form->field($model, 'time')->textInput() ?>
+            <div class="form-group field-delivery-time">
+            <label class="control-label" for="delivery-time"><?= Yii::t('app', 'Time') ?> </label>
+            <?= DatePicker::widget([
+                'id' => 'delivery-time',
+                'name' => 'Delivery[time]',
+                'value' => $model->time ? $model->time :date('Y-m-d', strtotime('today')),
+                'options' => ['placeholder' => Yii::t('app','Select Time')],
+                'pluginOptions' => [
+                    'format' => 'yyyy-m-dd',
+                    'todayHighLight' => true,
+                ]
+            ]);?>
+            </div>
             <?= $form->field($model, 'customer_id')->dropDownList(
                 ArrayHelper::map(Customer::find()->all(), 'id', 'name'),
                 ['prompt' => Yii::t('app','Select Customer')]
